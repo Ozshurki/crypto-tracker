@@ -1,0 +1,34 @@
+.mobile-navbar {
+    position: relative;
+    display: none;
+    top: 69px;
+    right: 0;
+    width: 100%;
+    background: rgba(255,255,255,.4);
+    opacity: 0.9;
+}
+
+.mobile-navbar::after{
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    left: 0;
+    top: 0;
+    background: var(--border);
+    transition: width 0.3s ease-in-out;
+}
+
+.mobile-navbar.border::after{
+    width: 100%;
+}
+
+
+@media (max-width: 900px) {
+    .mobile-navbar {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        position: absolute;
+    }
+}
