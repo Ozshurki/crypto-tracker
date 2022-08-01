@@ -1,56 +1,54 @@
-
-
 import styled from "styled-components";
 
+type headerType = {
+    isScroll:boolean;
+}
 
 type hamburgerType = {
     isOpen: boolean;
 }
 
-export const HeaderStyle = styled.header`
+export const HeaderStyle = styled.header<headerType>`
   position: fixed;
   top: 0;
   width: 100%;
   height: 80px;
-  padding: 10px;
+  padding: 25px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   z-index: 1;
-  background-color: var(--background);
-  border-bottom: 1px solid var(--border);
+  border-bottom: ${props => props.isScroll && "1px solid #E6ECF8;"};
   box-shadow: 0 0 7px var(--border);
-  background: rgba(255, 255, 255, .2);
+  background-color: white;
 
   & .logo {
-    width: 100px;
+    width: auto;
     display: flex;
     justify-content: center;
     align-items: center;
     margin-left: 20px;
-  }
-
-  & .logo a {
-    color: black;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
   }
 
   & .theme-toggle-container {
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
+    justify-content: space-around;
+    margin-left: 10px;
+    margin-top: 5px;
     height: 100%;
+    width: auto;
     font-size: 1.2rem;
-    width: 150px;
+    cursor: pointer;
   }
 
   & .navbar {
-    width: 30%;
+    width: 45%;
     display: flex;
+    justify-content: center;
     font-family: 'Poppins', sans-serif;
-  }
-
-  & .toggle-theme {
-    margin: 0 auto;
-    cursor: pointer;
   }
 
   & .cart {
@@ -68,7 +66,7 @@ export const HeaderStyle = styled.header`
   & .cart-badge {
     position: absolute;
     background-color: var(--border);
-    color: white;
+    color: black;
     font-size: 1rem;
     font-weight: 600;
     border-radius: 100%;
@@ -108,7 +106,7 @@ export const HeaderStyle = styled.header`
 `;
 export const Hamburger = styled.div<hamburgerType>`
   position: relative;
-  top: 5px;
+  top: 0;
   left: 5px;
   width: 30px;
   height: 40px;

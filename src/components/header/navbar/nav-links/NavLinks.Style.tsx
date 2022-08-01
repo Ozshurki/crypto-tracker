@@ -1,15 +1,16 @@
-import styled from "styled-components"
+import styled from "styled-components";
 
 export const NavLinksStyle = styled.ul`
-  
-    display: flex;
-    width: 100%;
-    height: 100%;
-    justify-content: space-evenly;
-    align-items: center;
-    list-style-type: none;
-    font-size: 1.2rem;
-  
+
+  display: flex;
+  margin-right: 10px;
+  width: 100%;
+  height: 100%;
+  justify-content: space-evenly;
+  align-items: center;
+  list-style-type: none;
+  font-size: 1.2rem;
+
 
   & .link-container {
     width: auto;
@@ -19,6 +20,11 @@ export const NavLinksStyle = styled.ul`
     padding: 0 10px;
   }
 
+  & .link-container:hover{
+    transform: translateY(-208px);
+    transition: .3s ease-in-out;
+  }
+
   & .link {
     position: relative;
     text-decoration: none;
@@ -26,7 +32,7 @@ export const NavLinksStyle = styled.ul`
     width: auto;
   }
 
-  & .link::after{
+  & .link::after {
     content: "";
     position: absolute;
     background-color: var(--text-primary);
@@ -40,21 +46,22 @@ export const NavLinksStyle = styled.ul`
   & .link:hover::after {
     width: 100%;
   }
-
+  
+  
 
   @media (max-width: 600px) {
-   
-      display: flex;
-      flex-direction: column;
-      width: 25%;
-      margin-bottom: 20px;
 
-    & .link{
+    display: flex;
+    flex-direction: column;
+    width: 25%;
+    margin-bottom: 20px;
+
+    & .link {
       color: var(--border);
       font-weight: 600;
     }
 
-    & .link::after{
+    & .link::after {
       background-color: var(--border);
     }
 
@@ -73,4 +80,4 @@ export const NavLinksStyle = styled.ul`
       width: 100px;
     }
   }
-`
+`;

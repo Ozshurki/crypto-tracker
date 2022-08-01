@@ -1,11 +1,10 @@
 import React from 'react';
 import {Navigate, Route, Routes} from "react-router-dom";
 
-
 import Home from "./pages/home/Home";
 import Header from "./components/header/Header";
 
-function App() {
+const App:React.FC = () => {
   return (
     <div className="App">
         <Header toggleTheme={() =>{}}/>
