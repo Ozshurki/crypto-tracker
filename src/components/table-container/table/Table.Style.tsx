@@ -14,12 +14,28 @@ export const TableStyle = styled.table`
   }
   
   & tbody tr{
-    cursor: pointer;
     border-bottom: 1px solid #e5e7eb;
+  }
+  
+  & tbody tr td:nth-child(2){
+    cursor: pointer;
   }
   
   & tbody tr:hover{
     background-color: #f9fafb;
+  }
+  
+  & tbody tr td:first-child {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 2px 25px;
+    margin-top: 17px;
+    margin-left: -20px;
+  }
+  
+  & .fav-icon svg{
+    cursor: pointer;
   }
 
   @media (max-width: 500px) {

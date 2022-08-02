@@ -1,9 +1,8 @@
 import React, {useState} from "react";
 
+import FilterContainer from "./filters-container/FilterContainer";
 import {TableContainerStyle} from "./TableContainer.Style";
 import Table from "./table/Table";
-import FilterContainer from "./filters-container/FilterContainer";
-
 
 const TableContainer:React.FC = () => {
 

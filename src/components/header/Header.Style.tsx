@@ -17,9 +17,9 @@ export const HeaderStyle = styled.header<headerType>`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  z-index: 1;
+  z-index: 999;
   border-bottom: ${props => props.isScroll && "1px solid #E6ECF8;"};
-  box-shadow: 0 0 7px var(--border);
+  box-shadow: ${props => props.isScroll && "0 0 3px 2px #E6ECF8"};
   background-color: white;
 
   & .logo {
