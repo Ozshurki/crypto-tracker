@@ -7,10 +7,17 @@ export const TableStyle = styled.table`
   & th{
     border-bottom: 1px solid #e5e7eb;
   }
+  
+  
   & td,& th{
     padding: 2px 40px;
-    text-align: center;
+    text-align: start;
     font-size: 15px;
+  }
+
+  & thead th:nth-child(2){
+    text-align: start;
+    padding-left: 45px;
   }
   
   & tbody tr{
@@ -27,15 +34,40 @@ export const TableStyle = styled.table`
   
   & tbody tr td:first-child {
     display: flex;
-    align-items: center;
     justify-content: space-around;
     padding: 2px 25px;
     margin-top: 17px;
     margin-left: -20px;
   }
+
+  & tbody tr td:nth-child(2){
+    padding-right: 0;
+  }
   
+  & tbody tr td:nth-child(2) div{
+    width: 100%;
+    display: flex;
+    gap: 5px;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 0 3px;
+    .coin-symbol{
+      color: gray;
+    }
+  }
+
   & .fav-icon svg{
     cursor: pointer;
+  }
+
+  & .coin-img{
+    width: auto;
+    height: 100%;
+    & img{
+      width: 25px;
+      height: 25px;
+      margin-bottom: -5px;
+    }
   }
 
   @media (max-width: 500px) {
@@ -72,6 +104,10 @@ export const TableStyle = styled.table`
       font-size: 15px;
       font-weight: bold;
       text-align: left;
+    }
+
+    & tbody tr td:first-child {
+      margin-left: 0;
     }
     
     & td:last-child:before{

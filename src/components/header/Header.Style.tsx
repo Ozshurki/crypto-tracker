@@ -9,6 +9,7 @@ type hamburgerType = {
 }
 
 export const HeaderStyle = styled.header<headerType>`
+
   position: fixed;
   top: 0;
   width: 100%;
@@ -36,8 +37,7 @@ export const HeaderStyle = styled.header<headerType>`
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    margin-left: 10px;
-    margin-top: 5px;
+    margin: 0 30px 0 10px;
     height: 100%;
     width: auto;
     font-size: 1.2rem;
@@ -83,6 +83,16 @@ export const HeaderStyle = styled.header<headerType>`
 
   & .menu-icon {
     display: none;
+  }
+  
+  & .header-options{
+    width: 50%;
+    display: flex;
+    justify-content: space-evenly;
+  }
+  
+  & .css-b62m3t-container{
+    width: 100px;
   }
 
   @media (max-width: 600px) {

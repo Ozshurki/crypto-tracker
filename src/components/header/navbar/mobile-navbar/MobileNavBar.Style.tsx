@@ -11,15 +11,16 @@ const MobileNavBarStyle = styled.nav<MobileNavBar>`
   top: 69px;
   right: 0;
   width: 100%;
-  background: rgba(255, 255, 255, .4);
+  background: white;
   opacity: 0.9;
+  border-bottom: 1px solid #E6ECF8;
 
 
   &::after {
     content: '';
     position: absolute;
     width: ${props => props.isOpen ? '100%' : '0'};
-    height: 2px;
+    height: 1px;
     left: 0;
     top: 0;
     background: black;

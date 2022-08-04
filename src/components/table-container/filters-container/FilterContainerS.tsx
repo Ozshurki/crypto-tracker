@@ -5,7 +5,7 @@ type FiltersType = {
 }
 
 
-export const FilterContainerStyle = styled.div<FiltersType>`
+export const FilterContainerS = styled.div<FiltersType>`
 
   width: 250px;
   display: flex;
@@ -96,6 +96,14 @@ export const FilterContainerStyle = styled.div<FiltersType>`
     height: ${props => props.filterIsOpen ? "200px" : "0px"};
     width: ${props => props.filterIsOpen ? "400px" : "0px"};
     transition: height .3s, width .3s;
+    z-index: 1;
+  }
+  
+  @media (max-width: 500px){
+    & .filters{
+      height: ${props => props.filterIsOpen ? "300px" : "0px"};
+      width: ${props => props.filterIsOpen ? "270px" : "0px"};
+    }
   }
 `;
 

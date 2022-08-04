@@ -6,7 +6,7 @@ export const NavLinksStyle = styled.ul`
   margin-right: 10px;
   width: 100%;
   height: 100%;
-  justify-content: space-evenly;
+  justify-content: space-around;
   align-items: center;
   list-style-type: none;
   font-size: 1.2rem;
