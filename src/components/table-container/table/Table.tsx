@@ -3,6 +3,7 @@ import {AiFillStar} from "react-icons/ai";
 import classNames from "classnames";
 
 import {TableStyle} from "./Table.Style";
+import {Link} from "react-router-dom";
 
 const cols = ["#", "Coin", "Price", "1h", "24h", "7d", "24h Vol", "Market Cap", "Last 7 days"];
 
@@ -151,13 +152,15 @@ const Table: React.FC<TableInt> = ({coins}) => {
                             {index}
                         </td>
                         <td data-label="Coin">
-                            <div>
+                            <Link to={`/coins/${coin.id}`}>
+                                <div>
                                 <span className="coin-img">
                                 <img src={coin.image} alt="coin"/>
                             </span>
-                                <span><strong>{coin.name}</strong></span>
-                                <span className="coin-symbol">{coin.symbol}</span>
-                            </div>
+                                    <span><strong>{coin.name}</strong></span>
+                                    <span className="coin-symbol">{coin.symbol}</span>
+                                </div>
+                            </Link>
                         </td>
                         <td data-label="Price">{coin.current_price}</td>
                         <td data-label="1h">{coin.hour}</td>

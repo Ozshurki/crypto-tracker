@@ -17,6 +17,11 @@ export const TrendCoinS = styled.div`
   :hover {
     transform: scale(1.1);
   }
+  
+  & a{
+    text-decoration: none;
+    color: black;
+  }
 
   & .trend-coin{
     display: flex;
@@ -25,20 +30,21 @@ export const TrendCoinS = styled.div`
 
     & .trend-stats{
       display: flex;
-      width: 65%;
+      width: 100%;
       
       & .trend-icon{
-        width: 40%;
+        width: 26%;
       
         & img{
-          width: 100%;
-          height: 100%;
+          width: 80%;
+          height: 80%;
+          border-radius: 3px;
         }
       }
       
       & .trend-details{
         padding: 5px;
-        width: 60%;
+        width: 74%;
       }
     }
     
