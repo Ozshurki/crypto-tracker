@@ -19,6 +19,10 @@ export const FilterContainerS = styled.div<FiltersType>`
     padding-top: 50px;
     border: none;
     background-color: white;
+    
+    :focus{
+      outline: none;
+    }
   }
 
   & label {
@@ -29,17 +33,17 @@ export const FilterContainerS = styled.div<FiltersType>`
     height: 100%;
     pointer-events: none;
     border-bottom: 1px solid white;
-  }
-
-  & label::after {
-    content: "";
-    position: absolute;
-    bottom: -1px;
-    left: 0;
-    width: 60%;
-    height: 100%;
-    border-bottom: 3px solid #42c9b2;
-    transition: all 0.3s ease;
+    
+    ::after{
+      content: "";
+      position: absolute;
+      bottom: -1px;
+      left: 0;
+      width: 60%;
+      height: 100%;
+      border-bottom: 3px solid #42c9b2;
+      transition: all 0.3s ease;
+    }
   }
 
   & .content-name {
@@ -50,10 +54,6 @@ export const FilterContainerS = styled.div<FiltersType>`
     transition: all 0.3s ease;
     font-size: 17px;
     color: #8b8b8b;
-  }
-
-  & input:focus {
-    outline: none;
   }
 
   & input:focus + .label-name .content-name,
@@ -79,10 +79,10 @@ export const FilterContainerS = styled.div<FiltersType>`
     bottom: -6px;
     right: 10px;
     z-index: 2;
-  }
-
-  & .sort-icon svg {
-    cursor: pointer;
+    
+    & svg{
+      cursor: pointer;
+    }
   }
 
   & .filters {

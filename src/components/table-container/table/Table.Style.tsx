@@ -1,7 +1,12 @@
 import styled from "styled-components";
 
+type tdType = {
+    color: string;
+    label: string;
+}
+
 export const TableStyle = styled.table`
-  width: 100%;
+  width: 1300px;
   border-collapse: collapse;
   
   & th{
@@ -9,14 +14,14 @@ export const TableStyle = styled.table`
   }
   
   & td,& th{
-    padding: 5px 40px;
+    padding: 5px 20px;
     text-align: start;
     font-size: 15px;
   }
 
   & thead th:nth-child(2){
     text-align: start;
-    padding-left: 45px;
+    padding-left: 50px;
   }
   
   & tbody tr{
@@ -25,10 +30,16 @@ export const TableStyle = styled.table`
     :hover{
       background-color: #f9fafb;
     }
-
-    & tbody tr td:first-child {
+    
+    & td{
+      width: 250px;
+    }
+    
+    & td:first-child {
+      width: 40px;
       display: flex;
       justify-content: space-around;
+      align-items: center;
       padding: 2px 25px;
       margin-top: 17px;
       margin-left: -20px;
@@ -50,6 +61,7 @@ export const TableStyle = styled.table`
         display: flex;
         gap: 5px;
         justify-content: flex-start;
+        padding-right: 18px;
         align-items: center;
         margin: 0 3px;
         & .coin-symbol{
@@ -57,9 +69,17 @@ export const TableStyle = styled.table`
         }
       }
     }
+    
+    & td:nth-child(3), 
+    & td:nth-child(4), 
+    & td:nth-child(5), 
+    & td:nth-child(6), 
+    & td:nth-child(7), 
+    & td:nth-child(8){
+      letter-spacing: .2px;
+    }
   }
   
-
   & .fav-icon svg{
     cursor: pointer;
   }
@@ -69,13 +89,20 @@ export const TableStyle = styled.table`
     height: 100%;
     
     & img{
-      width: 25px;
-      height: 25px;
+      width: 20px;
+      height: 20px;
       margin-bottom: -5px;
     }
   }
 
   @media (max-width: 500px) {
+
+    & td,& th{
+      padding: 5px 15px;
+      text-align: start;
+      font-size: 15px;
+    }
+    
     & thead {
       display: none;
     }
@@ -86,7 +113,8 @@ export const TableStyle = styled.table`
     }
 
     & tr {
-      margin-bottom: 15px;
+      margin: 25px auto;
+      padding: 10px;
       width: 270px;
     }
 
@@ -95,28 +123,50 @@ export const TableStyle = styled.table`
       padding-left: 50%;
       position: relative;
       
-      ::before{
-        content: attr(data-label);
-        position: absolute;
-        left: 0;
-        width: 50%;
-        padding-left: 15px;
-        font-size: 15px;
-        font-weight: bold;
-        text-align: left;
-      }
-      
       &:last-child:before{
         margin-top: 20px;
+      }
+      
+      & img{
+        width: 100px;
       }
     }
     
     & tbody tr td{
-      margin-bottom: 15px;
+      margin-bottom: 10px;
       
       :first-child{
         margin-left: 0;
       }
+      
+      :nth-child(2) div{
+        justify-content: space-evenly;
+      }
     }
   }
+`
+
+
+export const TdS = styled.td<tdType>`
+  
+  color: ${props => props.color};
+  
+  @media (max-width: 500px) {
+    
+    & td{
+      padding: 5px 0;
+    }
+    &::before {
+      content: "${props => props.label}";
+      color: black;
+      position: absolute;
+      left: 0;
+      width: 50%;
+      padding-left: 15px;
+      font-size: 15px;
+      font-weight: bold;
+      text-align: left;
+    }
+  }
+    
 `

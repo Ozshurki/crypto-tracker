@@ -1,6 +1,6 @@
 import React from "react";
 
-import {PageTitleStyle} from "./PageTitle.Style";
+import {PageTitleS} from "./PageTitleS";
 
 interface PageTileInt{
     title:string
@@ -8,9 +8,9 @@ interface PageTileInt{
 
 const PageTitle:React.FC<PageTileInt>= ({title}) =>{
     return(
-        <PageTitleStyle>
+        <PageTitleS>
             {title}
-        </PageTitleStyle>
+        </PageTitleS>
     )
 }
 

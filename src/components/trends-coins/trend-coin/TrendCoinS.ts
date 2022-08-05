@@ -59,7 +59,7 @@ export const TrendCoinS = styled.div`
   
   & .trend-chart{
     width: 100%;
-    height: 65%;
+    height: 85%;
   
    & img{
      padding: 3px;

@@ -3,7 +3,7 @@ import {CarouselS} from "./CarouselS";
 import TrendCoin from "./trend-coin/TrendCoin";
 import AliceCarousel from "react-alice-carousel";
 import {getTrendsCoins} from "../../apis/ApiServices";
-import Loader from "../loader/Loader";
+import {PuffLoader} from "react-spinners";
 
 const coins = [
     {
@@ -132,7 +132,7 @@ const Carousel: React.FC = () => {
 
     useEffect(() => {
         getCoins();
-    });
+    },[]);
 
     const responsive = {
         0: {
@@ -146,7 +146,8 @@ const Carousel: React.FC = () => {
     const items = coins.map((coin: any) => {
         return (
             <>
-                {isLoading ? <div className="loader-container"><Loader/></div> :
+                {isLoading ? <div className="loader-container"><PuffLoader
+                        color="#a749ff"/></div> :
                     <TrendCoin
                         id={coin.item?.id}
                         chartID={coin.item?.coin_id}
@@ -156,9 +157,9 @@ const Carousel: React.FC = () => {
                     />
                 }
             </>
-
         );
     });
+
     return (
         <CarouselS>
             <div className="carousel-wrapper">

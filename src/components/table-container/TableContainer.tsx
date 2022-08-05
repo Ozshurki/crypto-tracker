@@ -1,12 +1,12 @@
-import React, {useState} from "react";
-
+import React, {useEffect, useState} from "react";
+import ReactPaginate from "react-paginate";
 import FilterContainer from "./filters-container/FilterContainer";
 import {TableContainerStyle} from "./TableContainer.Style";
 import Table from "./table/Table";
+import usePagination from "../../hooks/usePagination";
 
 
-
-const data =[
+const data:any = [
     {
         "id": "bitcoin",
         "symbol": "btc",
@@ -2919,19 +2919,38 @@ const data =[
         "roi": null,
         "last_updated": "2022-08-04T09:14:45.924Z"
     }
-]
+];
 
-const TableContainer:React.FC = () => {
+const TableContainer: React.FC = () => {
 
     const [coin, setCoin] = useState("");
+    const {displayCoins, pageCount, changePage, setCoins} = usePagination();
 
-    return(
+
+    useEffect(() => {
+        setCoins(data);
+    }, []);
+
+    return (
         <TableContainerStyle>
             <FilterContainer coin={coin}
-            setCoin={(coin:string) => setCoin(coin)}/>
-            <Table coins={data}/>
+                             setCoin={(coin: string) => setCoin(coin)}/>
+            <Table coins={displayCoins}/>
+            <ReactPaginate previousLabel="< previous"
+                           nextLabel="next >"
+                           breakLabel="..."
+                           pageRangeDisplayed={3}
+                           pageCount={pageCount}
+                           onPageChange={changePage}
+                           containerClassName="pagination"
+                           pageLinkClassName="page-num"
+                           previousLinkClassName="page-num"
+                           nextLinkClassName="page-num"
+                           disabledClassName="pagination-disabled"
+                           activeClassName="pagination-active"
+            />
         </TableContainerStyle>
-    )
-}
+    );
+};
 
 export default TableContainer;

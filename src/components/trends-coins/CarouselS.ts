@@ -20,6 +20,8 @@ export const CarouselS = styled.div`
   & .loader-container{
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
     height: 160px;
     width: 200px;
     padding: 5px;
