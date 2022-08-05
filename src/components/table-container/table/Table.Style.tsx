@@ -40,7 +40,7 @@ export const TableStyle = styled.table`
       display: flex;
       justify-content: space-around;
       align-items: center;
-      padding: 2px 25px;
+      padding: 2px 25px 2px 35px;
       margin-top: 17px;
       margin-left: -20px;
     }
@@ -64,6 +64,7 @@ export const TableStyle = styled.table`
         padding-right: 18px;
         align-items: center;
         margin: 0 3px;
+        
         & .coin-symbol{
           color: gray;
         }

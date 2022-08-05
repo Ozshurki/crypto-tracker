@@ -13,8 +13,6 @@ interface TableInt {
 }
 
 
-
-
 const Table: React.FC<TableInt> = ({coins}) => {
 
     const [isCoinSaved, setIsCoinSaved] = useState<boolean>(false);
@@ -33,16 +31,18 @@ const Table: React.FC<TableInt> = ({coins}) => {
             </tr>
             </thead>
             <tbody>
-            {coins.map((coin: any, index : number) => {
+            {coins.map((coin: any, index: number) => {
                 return (
                     <tr key={index}>
-                        <TdS label="" color="black">
+                        <TdS label=""
+                             color="black">
                             <span className={classNames("fav-icon", isCoinSaved && "saved")}>
                                 <AiFillStar size="1.2rem"
                                             color="#ffcc66"/></span>
 
                         </TdS>
-                        <TdS label="Coin" color="black">
+                        <TdS label="Coin"
+                             color="black">
                             <Link to={`/coins/${coin.id}`}>
                                 <div>
                                 <span className="coin-img">
@@ -53,12 +53,18 @@ const Table: React.FC<TableInt> = ({coins}) => {
                                 </div>
                             </Link>
                         </TdS>
-                        <TdS label="Price" color="black">$ {coin.current_price.toLocaleString('en-US')}</TdS>
+                        <TdS label="Price"
+                             color="black">$ {coin.current_price.toLocaleString('en-US')}</TdS>
                         <TdS label="24h"
-                             color={isNegative(coin.price_change_24h)}>{Number(coin.price_change_percentage_24h.toFixed(3))}%</TdS>
-                        <TdS label="24h Vol" color="black">$ {coin.total_volume.toLocaleString('en-US')}</TdS>
-                        <TdS label="Mkt Cap" color="black">$ {coin.market_cap.toLocaleString('en-US')}</TdS>
-                        <TdS label="Last 7 days" color="black">
+                             color={isNegative(coin.price_change_24h)}>
+                            {Number(coin.price_change_percentage_24h.toFixed(3))}%
+                        </TdS>
+                        <TdS label="24h Vol"
+                             color="black">$ {coin.total_volume.toLocaleString('en-US')}</TdS>
+                        <TdS label="Mkt Cap"
+                             color="black">$ {coin.market_cap.toLocaleString('en-US')}</TdS>
+                        <TdS label="Last 7 days"
+                             color="black">
                             <img src="https://www.coingecko.com/coins/9956/sparkline" alt="chart"/>
                         </TdS>
                     </tr>
