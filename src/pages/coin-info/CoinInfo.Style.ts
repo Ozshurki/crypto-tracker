@@ -13,43 +13,70 @@ export const CoinInfoS = styled.div`
     width: 100%;
     height: 100%;
     display: flex;
-      
+    
+    & > :nth-child(2){
+      margin: 0 auto;
+      align-self: center;
+    }
+
     & .coin-info {
       display: flex;
       flex-direction: column;
       align-items: center;
       gap: 10px;
-      width: 35%;
-      min-height: 640px;
+      padding-right: 10px;
+      width: 25%;
+      min-height: 550px;
       border-right: 1px solid #E6ECF8;
-        
-      & .coin-img{
+      font-family: 'Poppins', sans-serif;
+
+      & .coin-img {
         display: flex;
         justify-content: center;
         align-items: center;
-        min-height: 350px;
-        max-width: 500px;
-        
-        & img{
-          width: 50%;
+        min-height: 250px;
+        max-width: 300px;
+
+        & img {
+          width: 40%;
           height: 50%;
         }
       }
-      
-      & div{
+
+      & div {
         width: 100%;
         height: auto;
       }
-      
-      & .coin-details{
+
+      & .coin-details {
         height: 35%;
         display: flex;
         flex-direction: column;
         justify-content: space-around;
-        font-size: 1.2rem;
+        font-size: 1.1rem;
+
+        & p {
+          margin: 20px 0;
+        }
+
+        & div {
+          margin-top: 5px;
+        }
       }
     }
   }
+  
+  @media (max-width: 500px){
+    & .content{
+      flex-direction: column;
+      align-items: center;
 
-
+      & .coin-info{
+        width: 80%;
+        border-right: 0;
+        border-bottom: 1px solid #E6ECF8;
+        padding-bottom: 30px;
+      }
+    }
+  }
 `;

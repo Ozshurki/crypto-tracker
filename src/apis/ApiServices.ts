@@ -1,12 +1,21 @@
 import axios from "axios";
 
 
-export const getTrendsCoins = async () =>{
-    const res = await axios.get('https://api.coingecko.com/api/v3/search/trending');
-    return res.data;
-}
+export const getTrendsCoins = async () => {
+    try{
+        const res = await axios.get('https://api.coingecko.com/api/v3/search/trending');
+        return res.data;
+    } catch (err){
+        console.log(err);
+    }
 
+};
 
-export const getChartById = async (id:number)=>{
-
-}
+export const getHistoricalData = async (id: string | undefined, days: number) => {
+    try {
+        const res = await axios.get(`https://api.coingecko.com/api/v3/coins/${id}/ohlc?vs_currency=usd&days=${days}`);
+        return res.data;
+    } catch (err) {
+        console.log(err);
+    }
+};

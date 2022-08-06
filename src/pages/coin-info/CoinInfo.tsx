@@ -3,6 +3,8 @@ import {CoinInfoS} from "./CoinInfo.Style";
 import {useParams} from "react-router-dom";
 import Chart from "../../components/chart/Chart";
 import {PuffLoader} from "react-spinners";
+import PageTitle from "../../components/page-title/PageTitle";
+import {getHistoricalData} from "../../apis/ApiServices";
 
 const data: any = {
     "id": "bitcoin",
@@ -5164,16 +5166,23 @@ const CoinInfo: React.FC = () => {
     const [days, setDays] = useState<number>(1);
     const [historicalData, setHistoricalData] = useState();
 
+    const getHistory = async () => {
+        const data1 = await getHistoricalData(id, days);
+        setHistoricalData(data1);
+    };
+
     useEffect(() => {
         setCoinInfo(data);
-    }, []);
+    }, [id]);
 
     useEffect(() => {
         setHistoricalData(history);
+        //getHistory();
     }, [days]);
 
     return (
         <CoinInfoS>
+            <PageTitle title="Details"/>
             <div className="content">
                 <div className="coin-info">
                     <div className="coin-img">
@@ -5189,7 +5198,11 @@ const CoinInfo: React.FC = () => {
                     </div>
                 </div>
                 {!historicalData ? <PuffLoader color="#a749ff"/> :
-                    <Chart history={historicalData} days={days}/>
+                    <Chart history={historicalData}
+                           days={days}
+                           coinName={data?.name}
+                           changeDays={(days:number) => setDays(days)}/>
+
                 }
             </div>
         </CoinInfoS>

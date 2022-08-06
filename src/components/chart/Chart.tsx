@@ -1,5 +1,6 @@
 import React from "react";
 import {ChartS} from "./Chart.Style";
+import {Line} from 'react-chartjs-2';
 import {
     Chart as ChartJS,
     CategoryScale,
@@ -10,7 +11,9 @@ import {
     Tooltip,
     Legend,
 } from 'chart.js';
-import {Line} from 'react-chartjs-2';
+import {chartDays} from "../../config/selected-buttons";
+import SelectedButtons from "../selected-buttons/SelectedButtons";
+
 
 ChartJS.register(
     CategoryScale,
@@ -28,9 +31,11 @@ ChartJS.register(
 interface ChartInt {
     history: any;
     days: number;
+    coinName: string;
+    changeDays: (days:number) => void;
 }
 
-const Chart: React.FC<ChartInt> = ({history, days}) => {
+const Chart: React.FC<ChartInt> = ({history, days, coinName, changeDays}) => {
 
     const options = {
         responsive: true,
@@ -40,7 +45,7 @@ const Chart: React.FC<ChartInt> = ({history, days}) => {
             },
             title: {
                 display: true,
-                text: 'Chart.js Line Chart',
+                text: coinName,
             },
         },
     };
@@ -49,7 +54,7 @@ const Chart: React.FC<ChartInt> = ({history, days}) => {
         labels: history.map((coin: any) => {
             let date = new Date(coin[0]);
             let time = date.getHours() > 12
-                ? `${date.getHours() - 12}: ${date.getMinutes()} PM`
+                ? `${date.getHours() - 12}:${date.getMinutes()} PM`
                 : `${date.getHours()}:${date.getMinutes()} AM`;
 
             return days === 1 ? time : date.toLocaleDateString();
@@ -68,6 +73,14 @@ const Chart: React.FC<ChartInt> = ({history, days}) => {
         <ChartS>
             <Line options={options}
                 data={data}/>
+            <div className="btns-container">{chartDays.map((day: any) => {
+                return (
+                    <SelectedButtons
+                        key={day.label}
+                        onClickHandler={() => changeDays(day.value)}
+                        selected={days === day.value}>{day.label}</SelectedButtons>
+                );
+            })}</div>
         </ChartS>
     );
 };
