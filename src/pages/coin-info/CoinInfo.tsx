@@ -1,10 +1,11 @@
-import React, {useEffect, useState} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import {CoinInfoS} from "./CoinInfo.Style";
 import {useParams} from "react-router-dom";
 import Chart from "../../components/chart/Chart";
 import {PuffLoader} from "react-spinners";
 import PageTitle from "../../components/page-title/PageTitle";
 import {getHistoricalData} from "../../apis/ApiServices";
+import {CryptoContext} from "../../context/CryptoContext";
 
 const data: any = {
     "id": "bitcoin",
@@ -5165,6 +5166,7 @@ const CoinInfo: React.FC = () => {
     const [coinInfo, setCoinInfo] = useState();
     const [days, setDays] = useState<number>(1);
     const [historicalData, setHistoricalData] = useState();
+    const crypto = useContext(CryptoContext);
 
     const getHistory = async () => {
         const data1 = await getHistoricalData(id, days);

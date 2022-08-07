@@ -6,6 +6,7 @@ export const ChartS = styled.div`
   margin: 0 auto;
   
   & .btns-container{
+    margin-top: 20px;
     width: 100%;
     display: flex;
     justify-content: space-evenly;

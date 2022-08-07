@@ -17,16 +17,6 @@ body {
   min-height: 100vh;
 }
 
-.App{
-  position: relative;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  overflow-x: hidden;
-  transition: all .5s;
-  background-size: cover;
-}
-
 body::-webkit-scrollbar {
   width: 10px; /* width of the entire scrollbar */
 }

@@ -54,8 +54,8 @@ const Chart: React.FC<ChartInt> = ({history, days, coinName, changeDays}) => {
         labels: history.map((coin: any) => {
             let date = new Date(coin[0]);
             let time = date.getHours() > 12
-                ? `${date.getHours() - 12}:${date.getMinutes()} PM`
-                : `${date.getHours()}:${date.getMinutes()} AM`;
+                ? `${date.getHours() - 12}:${date.getMinutes()}0 PM`
+                : `${date.getHours()}:${date.getMinutes()}0 AM`;
 
             return days === 1 ? time : date.toLocaleDateString();
         }),
@@ -63,9 +63,8 @@ const Chart: React.FC<ChartInt> = ({history, days, coinName, changeDays}) => {
             {
                 data: history.map((coin: any) => coin[1]),
                 label: `Price ( Past ${days} Days ) in USD`,
-                borderColor: "#EEBC1D"
+                borderColor: "#7510F7"
             },
-
         ],
     };
 

@@ -45,7 +45,7 @@ export const HeaderStyle = styled.header<headerType>`
   }
 
   & .navbar {
-    width: 45%;
+    width: 60%;
     display: flex;
     justify-content: center;
     font-family: 'Poppins', sans-serif;
@@ -98,6 +98,18 @@ export const HeaderStyle = styled.header<headerType>`
   @media (max-width: 600px) {
     height: 69px;
     border-bottom: none;
+    display: flex;
+    justify-content: space-around;
+    
+    & .logo{
+      display: none;
+    }
+
+    & .navbar {
+      width: 100%;
+      justify-content: space-around;
+    
+    }
   }
 
   @media (max-width: 600px) {

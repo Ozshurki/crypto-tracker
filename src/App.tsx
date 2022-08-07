@@ -1,24 +1,38 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Navigate, Route, Routes} from "react-router-dom";
 
 import Home from "./pages/home/Home";
 import Header from "./components/header/Header";
 import CoinInfo from "./pages/coin-info/CoinInfo";
 import Favorites from "./pages/favorites/Favorites";
+import Footer from "./components/footer/Footer";
+import ScrollToTop from "./components/scroll-to-top/ScrollToTop";
+import ScrollUpBtn from "./components/scroll-button/ScrollUpBtn";
+import {ThemeProvider} from "styled-components";
+import {lightTheme, darkTheme} from "./config/themes";
+import {AppS} from "./App.Style";
 
-const App:React.FC = () => {
 
-  return (
-    <div className="App">
-        <Header toggleTheme={() =>{}}/>
-      <Routes>
-        <Route path="/coins" element={<Home/>}/>
-        <Route path="/coins/:id" element={<CoinInfo/>}/>
-        <Route path="/favorites" element={<Favorites/>}/>
-        <Route path="*" element={<Navigate to="/coins"/>}/>
-      </Routes>
-    </div>
-  );
-}
+const App: React.FC = () => {
+
+    const [isDarkTheme, setIsDarkTheme] = useState(false);
+
+    return (
+        <ThemeProvider theme={isDarkTheme ? darkTheme : lightTheme}>
+            <AppS>
+                <Header toggleTheme={() => setIsDarkTheme(!isDarkTheme)}/>
+                <ScrollToTop/>
+                <Routes>
+                    <Route path="/coins" element={<Home/>}/>
+                    <Route path="/coins/:id" element={<CoinInfo/>}/>
+                    <Route path="/favorites" element={<Favorites/>}/>
+                    <Route path="*" element={<Navigate to="/coins"/>}/>
+                </Routes>
+                <ScrollUpBtn/>
+                <Footer/>
+            </AppS>
+        </ThemeProvider>
+    );
+};
 
 export default App;

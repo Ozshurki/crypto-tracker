@@ -1,17 +1,15 @@
-import React, {useState} from 'react';
-import {BsFillMoonFill, BsSun} from "react-icons/bs";
+import React, {useContext, useState} from 'react';
 import Select from "react-select";
-import useLocalStorage from "use-local-storage";
+import Toggle from 'react-toggle';
+import "../Toggle/Toggle.css";
 
 import {HeaderStyle, Hamburger} from "./Header.Style";
 import Navigation from "./navbar/navigation/Navigation";
 import MobileNavBar from "./navbar/mobile-navbar/MobileNavBar";
+import {BsSun, BsFillMoonFill} from "react-icons/bs";
+import {CryptoContext} from "../../context/CryptoContext";
+import {currencyOptions} from "../../config/currency-option";
 
-
-const options = [
-    {value: 'usd', label: 'USD'},
-    {value: 'ils', label: 'ILS'},
-]
 
 interface HeaderInt {
     toggleTheme: () => void;
@@ -20,15 +18,14 @@ interface HeaderInt {
 const Header: React.FC<HeaderInt> = ({toggleTheme}) => {
 
     const [isOpen, setIsOpen] = useState<boolean>(false);
-    const [selectedOption, setSelectedOption] = useState(options[0]);
-    const [theme] = useLocalStorage<string>('theme' ? 'dark' : 'light', '');
+    const [selectedOption, setSelectedOption] = useState(currencyOptions[0]);
     const [isScroll, setIsScroll] = useState<boolean>(false);
+    const crypto = useContext(CryptoContext);
+
 
     const changeBackGround = () => {
-        if (window.scrollY > 90)
-            setIsScroll(true);
-        else
-            setIsScroll(false);
+        if (window.scrollY > 90) setIsScroll(true);
+        else setIsScroll(false);
     };
 
     window.addEventListener('scroll', changeBackGround);
@@ -45,21 +42,17 @@ const Header: React.FC<HeaderInt> = ({toggleTheme}) => {
                 <Navigation/>
                 {isOpen && <MobileNavBar closeMobileMenu={closeMobileMenu}/>}
                 <div className="header-options">
-                <div className="theme-toggle-container">
-                    {theme === "light" ? <BsSun className="toggle-theme dark"
-                                                color={theme ? "dark" : "white"}
-                                                size="1.1rem"
-                                                onClick={toggleTheme}/>
-                        :
-                        <BsFillMoonFill className="toggle-theme light"
-                                        color={theme ? "dark" : "white"}
-                                        size="1.1rem"
-                                        onClick={toggleTheme}/>
-                    }
-                </div>
-                <Select defaultValue={selectedOption}
-                        options={options}
-                        />
+                    <div className="theme-toggle-container">
+                        <Toggle
+                            icons={{
+                                checked: <BsSun size="2rem" color="black"/>,
+                                unchecked: <BsFillMoonFill size="1.7rem" color="white"/>,
+                            }}
+                        onChange={toggleTheme}/>
+                    </div>
+                    <Select defaultValue={selectedOption}
+                            options={currencyOptions}
+                            onChange={(selectedOption:any) => crypto?.setCurrency(selectedOption)}/>
                 </div>
             </div>
             <Hamburger onClick={toggleNavBar} isOpen={isOpen}>

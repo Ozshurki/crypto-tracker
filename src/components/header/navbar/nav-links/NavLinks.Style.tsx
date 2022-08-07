@@ -4,7 +4,7 @@ export const NavLinksStyle = styled.ul`
 
   display: flex;
   margin-right: 10px;
-  width: 100%;
+  width: 70%;
   height: 100%;
   justify-content: space-around;
   align-items: center;
