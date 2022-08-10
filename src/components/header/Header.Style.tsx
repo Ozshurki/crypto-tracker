@@ -20,8 +20,9 @@ export const HeaderStyle = styled.header<headerType>`
   align-items: center;
   z-index: 999;
   border-bottom: ${props => props.isScroll && "1px solid #E6ECF8;"};
-  box-shadow: ${props => props.isScroll && "0 0 3px 2px #E6ECF8"};
-  background-color: white;
+  box-shadow: ${props => props.isScroll && "0 0 3px 1px #E6ECF8"};
+  background-color: ${props => props.theme.backgroundColor};
+  color: ${props => props.theme.textColor};
 
   & .logo {
     width: auto;
@@ -58,15 +59,13 @@ export const HeaderStyle = styled.header<headerType>`
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    background-color: var(--background);
+    
     border: none;
     margin: 15px 15px 0 0;
   }
 
   & .cart-badge {
     position: absolute;
-    background-color: var(--border);
-    color: black;
     font-size: 1rem;
     font-weight: 600;
     border-radius: 100%;
@@ -144,7 +143,6 @@ export const Hamburger = styled.div<hamburgerType>`
     width: 80%;
     height: 2px;
     border: 1px solid black;
-    background-color: black;
     border-radius: 50px;
     transition: 0.3s ease;
   }

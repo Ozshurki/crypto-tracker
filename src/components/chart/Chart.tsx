@@ -9,10 +9,12 @@ import {
     LineElement,
     Title,
     Tooltip,
+    Filler,
     Legend,
 } from 'chart.js';
 import {chartDays} from "../../config/selected-buttons";
 import SelectedButtons from "../selected-buttons/SelectedButtons";
+import {useSelector} from "react-redux";
 
 
 ChartJS.register(
@@ -22,11 +24,9 @@ ChartJS.register(
     LineElement,
     Title,
     Tooltip,
+    Filler,
     Legend
 );
-
-
-
 
 interface ChartInt {
     history: any;
@@ -36,6 +36,8 @@ interface ChartInt {
 }
 
 const Chart: React.FC<ChartInt> = ({history, days, coinName, changeDays}) => {
+
+    const currency = useSelector((state: any) => state.currency.currency);
 
     const options = {
         responsive: true,
@@ -61,9 +63,11 @@ const Chart: React.FC<ChartInt> = ({history, days, coinName, changeDays}) => {
         }),
         datasets: [
             {
+                fill:true,
                 data: history.map((coin: any) => coin[1]),
-                label: `Price ( Past ${days} Days ) in USD`,
-                borderColor: "#7510F7"
+                label: `Price ( Past ${days} Days ) in ${currency.toUpperCase()}`,
+                borderColor: "#7510F7",
+                backgroundColor: 'rgba(117, 16, 247, 0.3)',
             },
         ],
     };

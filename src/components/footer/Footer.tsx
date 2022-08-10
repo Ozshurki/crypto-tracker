@@ -1,13 +1,13 @@
 import React from "react";
-import "./footer.css";
 
 import {AiOutlineLinkedin} from "react-icons/ai";
 import {FaGithubSquare} from "react-icons/fa";
+import {FooterS} from "./Footer.Style";
 
 
 const Footer: React.FC = () => {
     return (
-        <footer className="footer">
+        <FooterS>
             <p>Crypto tracker</p>
             <p>Handcrafted by Oz Shurki - +972-545416161</p>
             <div className="social-links">
@@ -15,7 +15,7 @@ const Footer: React.FC = () => {
                     <a href="https://www.linkedin.com/in/oz-shurki/" target="_blank">
                         <AiOutlineLinkedin className="linkedin-icon"
                                            size="1.7rem"
-                                           color="white"/>
+                                           color="#7510F7"/>
 
                     </a>
                 </div>
@@ -23,11 +23,11 @@ const Footer: React.FC = () => {
                     <a href="https://github.com/Ozshurki" target="_blank">
                         <FaGithubSquare className="github-icon"
                                         size="1.7rem"
-                                        color="white"/>
+                                        color="#7510F7"/>
                     </a>
                 </div>
             </div>
-        </footer>
+        </FooterS>
     );
 };
 

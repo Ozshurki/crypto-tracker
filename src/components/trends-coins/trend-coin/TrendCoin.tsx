@@ -1,6 +1,8 @@
-import React, {useEffect, useState} from "react";
+import React from "react";
 import {TrendCoinS} from "./TrendCoinS";
 import {Link} from "react-router-dom";
+import {useSelector} from "react-redux";
+import {updateCurrency} from "../../../utils/functions/UpdateCurrency";
 
 
 interface TrendCoinInt {
@@ -13,20 +15,8 @@ interface TrendCoinInt {
 
 const TrendCoin: React.FC<TrendCoinInt> = ({name, price, url, id, chartID}) => {
 
-    const [chart, setChart] = useState("");
-
-    const getChart = async () => {
-        try {
-            //const data = await getChartById(id);
-
-        } catch (err) {
-            console.log(err);
-        }
-    };
-
-    useEffect(() => {
-        getChart();
-    });
+    const currency = useSelector((state: any) => state.currency.currency);
+    const symbol = useSelector((state: any) => state.currency.symbol);
 
     return (
         <TrendCoinS key={id}>
@@ -38,7 +28,7 @@ const TrendCoin: React.FC<TrendCoinInt> = ({name, price, url, id, chartID}) => {
                         </div>
                         <div className="trend-details">
                             <div>{name}</div>
-                            <div>${Number(price.toFixed(6))}</div>
+                            <div>{symbol} {updateCurrency(currency, price)}</div>
                         </div>
                     </div>
                 </div>

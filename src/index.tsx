@@ -2,19 +2,23 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import {BrowserRouter} from "react-router-dom";
 import 'react-alice-carousel/lib/alice-carousel.css';
+import {Provider} from "react-redux";
+
 import './index.css';
 import App from './App';
-import Crypto from "./context/CryptoContext";
+import store from "./store";
+
 
 const root = ReactDOM.createRoot(
     document.getElementById('root') as HTMLElement
 );
+
 root.render(
     <React.StrictMode>
         <BrowserRouter>
-            <Crypto>
+            <Provider store={store}>
                 <App/>
-            </Crypto>
+            </Provider>
         </BrowserRouter>
     </React.StrictMode>
 );

@@ -7,6 +7,7 @@ export const CoinInfoS = styled.div`
   align-items: center;
   margin-top: 80px;
   width: 100%;
+  color: ${props => props.theme.textColor};
   
   & .content {
     padding: 0 10px;

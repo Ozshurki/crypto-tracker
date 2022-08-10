@@ -11,9 +11,9 @@ export const getTrendsCoins = async () => {
 
 };
 
-export const getHistoricalData = async (id: string | undefined, days: number) => {
+export const getHistoricalData = async (id: string | undefined, days: number, currency:string) => {
     try {
-        const res = await axios.get(`https://api.coingecko.com/api/v3/coins/${id}/ohlc?vs_currency=usd&days=${days}`);
+        const res = await axios.get(`https://api.coingecko.com/api/v3/coins/${id}/ohlc?vs_currency=${currency}&days=${days}`);
         return res.data;
     } catch (err) {
         console.log(err);

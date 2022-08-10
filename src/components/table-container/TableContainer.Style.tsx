@@ -20,6 +20,7 @@ export const TableContainerStyle = styled.div`
     justify-content: center;
     align-items: center;
     gap:5px;
+    color: ${props => props.theme.textColor};
     
     & .page-num{
       padding: 8px 15px;

@@ -17,6 +17,7 @@ export const TableStyle = styled.table`
     padding: 5px 20px;
     text-align: start;
     font-size: 15px;
+    color: ${props => props.theme.textColor};
   }
 
   & thead th:nth-child(2){
@@ -28,7 +29,7 @@ export const TableStyle = styled.table`
     border-bottom: 1px solid #e5e7eb;
     
     :hover{
-      background-color: #f9fafb;
+      background-color: ${props => props.theme.rowHover};
     }
     
     & td{
@@ -49,11 +50,11 @@ export const TableStyle = styled.table`
       padding-right: 0;
       cursor: pointer;
       text-decoration: none;
-      color: black;
+      color: ${props => props.theme.textColor};
 
       & a{
         text-decoration: none;
-        color: black;
+        color: ${props => props.theme.textColor};
       }
       
       & div{

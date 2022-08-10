@@ -10,4 +10,5 @@ export const PageTitleS = styled.div`
   font-family: 'Poppins', sans-serif;
   font-size: 1.2rem;
   font-weight: 600;
+  color: ${props => props.theme.textColor};
 `;

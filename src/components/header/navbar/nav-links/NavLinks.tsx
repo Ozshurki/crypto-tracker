@@ -1,7 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import {motion} from "framer-motion";
-//import {RootStateOrAny, useSelector} from "react-redux";
 
 import {NavLinksStyle} from "./NavLinks.Style";
 
@@ -14,8 +13,6 @@ const NavLinks: React.FC<Props> = ({isMobile, closeMobileMenu}) => {
 
     const animateFrom = {opacity: 0, y: -40};
     const animateTo = {opacity: 1, y: 0};
-
-    //const savedCityQty:number = useSelector((state:RootStateOrAny )=> state.favorites.citiesQuantity);
 
     const onClickHandler = () => {
         isMobile && closeMobileMenu();

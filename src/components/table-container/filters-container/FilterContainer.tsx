@@ -25,7 +25,7 @@ const FilterContainer: React.FC<FilterContainerInt> = ({coin, setCoin}) => {
             </label>
                 <div className="sort-icon" onClick={() => setFilterIsOpen(!filterIsOpen)}>
                     { filterIsOpen ? <AiOutlineClose size="1.4rem" color="black"/>
-                        : <MdOutlineSort size="1.4rem" color="black"/>
+                        : <MdOutlineSort size="1.4rem" color="#7510F7"/>
                     }
                 </div>
             <div className="filters">

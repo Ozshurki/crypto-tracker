@@ -8,11 +8,12 @@ export const TrendCoinS = styled.div`
   width: 200px;
   padding: 5px;
   margin: 20px;
-  border: 1px solid #E6ECF8;
-  box-shadow: 0 0 5px 3px #E6ECF8;
+  box-shadow: ${props => props.theme.boxShadow};
   border-radius: 10px;
   cursor: pointer;
   transition: transform .2s ease-in-out;
+  background-color: ${props => props.theme.trendBackgroundColor};
+  color: ${props => props.theme.textColor};
   
   :hover {
     transform: scale(1.1);
@@ -20,7 +21,7 @@ export const TrendCoinS = styled.div`
   
   & a{
     text-decoration: none;
-    color: black;
+    color: ${props => props.theme.textColor};
   }
 
   & .trend-coin{

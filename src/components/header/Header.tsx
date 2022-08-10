@@ -1,4 +1,4 @@
-import React, {useContext, useState} from 'react';
+import React, {useState} from 'react';
 import Select from "react-select";
 import Toggle from 'react-toggle';
 import "../Toggle/Toggle.css";
@@ -7,8 +7,9 @@ import {HeaderStyle, Hamburger} from "./Header.Style";
 import Navigation from "./navbar/navigation/Navigation";
 import MobileNavBar from "./navbar/mobile-navbar/MobileNavBar";
 import {BsSun, BsFillMoonFill} from "react-icons/bs";
-import {CryptoContext} from "../../context/CryptoContext";
+import {useDispatch} from "react-redux";
 import {currencyOptions} from "../../config/currency-option";
+import {currencyActions} from "../../store/slices/currency";
 
 
 interface HeaderInt {
@@ -20,7 +21,7 @@ const Header: React.FC<HeaderInt> = ({toggleTheme}) => {
     const [isOpen, setIsOpen] = useState<boolean>(false);
     const [selectedOption, setSelectedOption] = useState(currencyOptions[0]);
     const [isScroll, setIsScroll] = useState<boolean>(false);
-    const crypto = useContext(CryptoContext);
+    const dispatch = useDispatch();
 
 
     const changeBackGround = () => {
@@ -52,7 +53,7 @@ const Header: React.FC<HeaderInt> = ({toggleTheme}) => {
                     </div>
                     <Select defaultValue={selectedOption}
                             options={currencyOptions}
-                            onChange={(selectedOption:any) => crypto?.setCurrency(selectedOption)}/>
+                            onChange={(selectedOption:any) => dispatch(currencyActions.setCurrency(selectedOption))}/>
                 </div>
             </div>
             <Hamburger onClick={toggleNavBar} isOpen={isOpen}>

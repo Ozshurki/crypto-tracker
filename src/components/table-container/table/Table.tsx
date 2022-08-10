@@ -1,10 +1,12 @@
 import React, {useState} from "react";
 import {AiFillStar} from "react-icons/ai";
 import classNames from "classnames";
-
-import {TableStyle} from "./Table.Style";
+import {useSelector} from "react-redux";
 import {Link} from "react-router-dom";
-import {TdS} from "./Table.Style";
+
+import {TableStyle, TdS} from "./Table.Style";
+import {updateCurrency} from "../../../utils/functions/UpdateCurrency";
+
 
 const cols = ["", "Coin", "Price", "24h", "24h Vol", "Market Cap", "Last 7 days"];
 
@@ -12,10 +14,11 @@ interface TableInt {
     coins: any;
 }
 
-
 const Table: React.FC<TableInt> = ({coins}) => {
 
     const [isCoinSaved, setIsCoinSaved] = useState<boolean>(false);
+    const currency = useSelector((state: any) => state.currency.currency);
+    const symbol = useSelector((state: any) => state.currency.symbol);
 
     const isNegative = (num: number) => num < 0 ? "red" : "green";
 
@@ -54,15 +57,15 @@ const Table: React.FC<TableInt> = ({coins}) => {
                             </Link>
                         </TdS>
                         <TdS label="Price"
-                             color="black">$ {coin.current_price.toLocaleString('en-US')}</TdS>
+                             color="black">{symbol} {updateCurrency(currency, coin.current_price.toLocaleString('en-US'))}</TdS>
                         <TdS label="24h"
                              color={isNegative(coin.price_change_24h)}>
-                            {Number(coin.price_change_percentage_24h.toFixed(3))}%
+                            {updateCurrency(currency, coin.price_change_percentage_24h)}%
                         </TdS>
                         <TdS label="24h Vol"
-                             color="black">$ {coin.total_volume.toLocaleString('en-US')}</TdS>
+                             color="black">{symbol} {coin.total_volume.toLocaleString('en-US')}</TdS>
                         <TdS label="Mkt Cap"
-                             color="black">$ {coin.market_cap.toLocaleString('en-US')}</TdS>
+                             color="black">{symbol} {coin.market_cap.toLocaleString('en-US')}</TdS>
                         <TdS label="Last 7 days"
                              color="black">
                             <img src="https://www.coingecko.com/coins/9956/sparkline" alt="chart"/>

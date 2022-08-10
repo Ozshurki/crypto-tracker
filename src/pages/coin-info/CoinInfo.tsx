@@ -1,11 +1,11 @@
-import React, {useContext, useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import {CoinInfoS} from "./CoinInfo.Style";
 import {useParams} from "react-router-dom";
 import Chart from "../../components/chart/Chart";
 import {PuffLoader} from "react-spinners";
 import PageTitle from "../../components/page-title/PageTitle";
 import {getHistoricalData} from "../../apis/ApiServices";
-import {CryptoContext} from "../../context/CryptoContext";
+import {useSelector} from "react-redux";
 
 const data: any = {
     "id": "bitcoin",
@@ -5166,10 +5166,12 @@ const CoinInfo: React.FC = () => {
     const [coinInfo, setCoinInfo] = useState();
     const [days, setDays] = useState<number>(1);
     const [historicalData, setHistoricalData] = useState();
-    const crypto = useContext(CryptoContext);
+    const currency = useSelector((state: any) => state.currency.currency);
+    const symbol = useSelector((state: any) => state.currency.symbol);
+
 
     const getHistory = async () => {
-        const data1 = await getHistoricalData(id, days);
+        const data1 = await getHistoricalData(id, days, currency);
         setHistoricalData(data1);
     };
 
@@ -5180,7 +5182,8 @@ const CoinInfo: React.FC = () => {
     useEffect(() => {
         setHistoricalData(history);
         //getHistory();
-    }, [days]);
+
+    }, [days, currency]);
 
     return (
         <CoinInfoS>
@@ -5193,18 +5196,15 @@ const CoinInfo: React.FC = () => {
                     <div className="coin-details">
                         <p className="details">{data?.description.en.split(". ")[0]}.</p>
                         <div className="coin-rank"><strong>Rank</strong>: {data?.market_cap_rank}</div>
-                        <div className="coin-price"><strong>Current Price</strong>:
-                            $ {data?.market_data.current_price.usd.toLocaleString('en-US')}</div>
-                        <div className="coin-mrktCap"><strong>Market Cap</strong>:
-                            ${data?.market_data.market_cap.usd.toLocaleString('en-US')}</div>
+                        <div className="coin-price"><strong>Current Price</strong>: {symbol}{data?.market_data.current_price[currency].toLocaleString('en-US')}</div>
+                        <div className="coin-mrktCap"><strong>Market Cap</strong>: {symbol}{data?.market_data.market_cap[currency].toLocaleString('en-US')}</div>
                     </div>
                 </div>
                 {!historicalData ? <PuffLoader color="#a749ff"/> :
                     <Chart history={historicalData}
                            days={days}
                            coinName={data?.name}
-                           changeDays={(days:number) => setDays(days)}/>
-
+                           changeDays={(days: number) => setDays(days)}/>
                 }
             </div>
         </CoinInfoS>

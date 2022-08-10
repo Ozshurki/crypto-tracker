@@ -18,7 +18,7 @@ export const FilterContainerS = styled.div<FiltersType>`
     height: 100%;
     padding-top: 50px;
     border: none;
-    background-color: white;
+    background-color: ${props => props.theme.backgroundColor};
     
     :focus{
       outline: none;
@@ -53,7 +53,7 @@ export const FilterContainerS = styled.div<FiltersType>`
     padding-bottom: 5px;
     transition: all 0.3s ease;
     font-size: 17px;
-    color: #8b8b8b;
+    color: ${props => props.theme.textColor};
   }
 
   & input:focus + .label-name .content-name,
@@ -88,7 +88,7 @@ export const FilterContainerS = styled.div<FiltersType>`
   & .filters {
     position: absolute;
     transform: translateY(100%);
-    background-color: white;
+    background-color: ${props => props.theme.backgroundColor};
     box-shadow: 0 0 6px .6px black;
     border-radius: 10px 0 10px 10px;
     bottom: -5px;
