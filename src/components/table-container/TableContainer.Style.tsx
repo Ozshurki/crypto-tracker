@@ -21,6 +21,7 @@ export const TableContainerStyle = styled.div`
     align-items: center;
     gap:5px;
     color: ${props => props.theme.textColor};
+    font-family: 'Poppins', sans-serif;
     
     & .page-num{
       padding: 8px 15px;

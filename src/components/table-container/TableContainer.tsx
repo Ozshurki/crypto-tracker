@@ -4,9 +4,12 @@ import FilterContainer from "./filters-container/FilterContainer";
 import {TableContainerStyle} from "./TableContainer.Style";
 import Table from "./table/Table";
 import usePagination from "../../hooks/usePagination";
+import {getCoinsList} from "../../apis/ApiServices";
+import {useSelector} from "react-redux";
+import {sort} from "../../utils/functions/Sort";
 
 
-const data:any = [
+const data: any = [
     {
         "id": "bitcoin",
         "symbol": "btc",
@@ -2924,17 +2927,38 @@ const data:any = [
 const TableContainer: React.FC = () => {
 
     const [coin, setCoin] = useState("");
+    const [sortKind, setSortKind] = useState<number>(0);
     const {displayCoins, pageCount, changePage, setCoins} = usePagination();
+    const currency = useSelector((state: any) => state.currency.currency);
 
+
+    const getCoins = async () => {
+        //const coins = await getCoinsList(currency);
+        //setCoins(coins);
+        setCoins(data);
+    };
 
     useEffect(() => {
-        setCoins(data);
-    }, []);
+        getCoins();
+        //setCoins(data);
+    }, [currency]);
+
+    useEffect(() => {
+
+        // const sortedCoins = sort(sortKind, data);
+        // console.log(sortedCoins);
+        // if (!!sortedCoins) {
+        //     console.log("sorted");
+        //     setCoins(sortedCoins);
+        // }
+
+    }, [sortKind]);
 
     return (
         <TableContainerStyle>
             <FilterContainer coin={coin}
-                             setCoin={(coin: string) => setCoin(coin)}/>
+                             setCoin={(coin: string) => setCoin(coin)}
+                             setSortKind={(sortKind: number) => setSortKind(sortKind)}/>
             <Table coins={displayCoins}/>
             <ReactPaginate previousLabel="< previous"
                            nextLabel="next >"

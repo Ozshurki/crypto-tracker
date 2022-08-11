@@ -5,19 +5,50 @@ type tdType = {
     label: string;
 }
 
+export const TdS = styled.td<tdType>`
+
+
+  :nth-child(4){
+    color: ${props => props.color};
+  }
+  
+
+  @media (max-width: 500px) {
+
+    & td{
+      padding: 5px 0;
+    }
+    &::before {
+      content: "${props => props.label}";
+      color: black;
+      position: absolute;
+      left: 0;
+      width: 50%;
+      padding-left: 15px;
+      font-size: 15px;
+      font-weight: bold;
+      text-align: left;
+    }
+  }
+
+`
+
+
 export const TableStyle = styled.table`
   width: 1300px;
   border-collapse: collapse;
+  font-family: 'Poppins', sans-serif;
   
   & th{
     border-bottom: 1px solid #e5e7eb;
+    color: ${props => props.theme.textColor};
   }
   
   & td,& th{
     padding: 5px 20px;
     text-align: start;
     font-size: 15px;
-    color: ${props => props.theme.textColor};
+    
   }
 
   & thead th:nth-child(2){
@@ -34,40 +65,41 @@ export const TableStyle = styled.table`
     
     & td{
       width: 250px;
-    }
-    
-    & td:first-child {
-      width: 40px;
-      display: flex;
-      justify-content: space-around;
-      align-items: center;
-      padding: 2px 25px 2px 35px;
-      margin-top: 17px;
-      margin-left: -20px;
-    }
-    
-    & td:nth-child(2){
-      padding-right: 0;
-      cursor: pointer;
-      text-decoration: none;
       color: ${props => props.theme.textColor};
-
-      & a{
-        text-decoration: none;
-        color: ${props => props.theme.textColor};
+      
+      :first-child{
+        width: 40px;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        padding: 2px 25px 2px 35px;
+        margin-top: 17px;
+        margin-left: -20px;
       }
       
-      & div{
-        width: 100%;
-        display: flex;
-        gap: 5px;
-        justify-content: flex-start;
-        padding-right: 18px;
-        align-items: center;
-        margin: 0 3px;
-        
-        & .coin-symbol{
-          color: gray;
+      :nth-child(2){
+        padding-right: 0;
+        cursor: pointer;
+        text-decoration: none;
+        color: ${props => props.theme.textColor};
+
+        & a{
+          text-decoration: none;
+          color: ${props => props.theme.textColor};
+        }
+
+        & div{
+          width: 100%;
+          display: flex;
+          gap: 5px;
+          justify-content: flex-start;
+          padding-right: 18px;
+          align-items: center;
+          margin: 0 3px;
+
+          & .coin-symbol{
+            color: gray;
+          }
         }
       }
     }
@@ -137,6 +169,7 @@ export const TableStyle = styled.table`
     & tbody tr td{
       margin-bottom: 10px;
       
+      
       :first-child{
         margin-left: 0;
       }
@@ -146,29 +179,4 @@ export const TableStyle = styled.table`
       }
     }
   }
-`
-
-
-export const TdS = styled.td<tdType>`
-  
-  color: ${props => props.color};
-  
-  @media (max-width: 500px) {
-    
-    & td{
-      padding: 5px 0;
-    }
-    &::before {
-      content: "${props => props.label}";
-      color: black;
-      position: absolute;
-      left: 0;
-      width: 50%;
-      padding-left: 15px;
-      font-size: 15px;
-      font-weight: bold;
-      text-align: left;
-    }
-  }
-    
 `

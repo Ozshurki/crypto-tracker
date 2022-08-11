@@ -1,11 +1,10 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {AiFillStar} from "react-icons/ai";
 import classNames from "classnames";
 import {useSelector} from "react-redux";
 import {Link} from "react-router-dom";
 
 import {TableStyle, TdS} from "./Table.Style";
-import {updateCurrency} from "../../../utils/functions/UpdateCurrency";
 
 
 const cols = ["", "Coin", "Price", "24h", "24h Vol", "Market Cap", "Last 7 days"];
@@ -17,7 +16,6 @@ interface TableInt {
 const Table: React.FC<TableInt> = ({coins}) => {
 
     const [isCoinSaved, setIsCoinSaved] = useState<boolean>(false);
-    const currency = useSelector((state: any) => state.currency.currency);
     const symbol = useSelector((state: any) => state.currency.symbol);
 
     const isNegative = (num: number) => num < 0 ? "red" : "green";
@@ -57,10 +55,10 @@ const Table: React.FC<TableInt> = ({coins}) => {
                             </Link>
                         </TdS>
                         <TdS label="Price"
-                             color="black">{symbol} {updateCurrency(currency, coin.current_price.toLocaleString('en-US'))}</TdS>
+                             color="black">{symbol} {coin.current_price.toLocaleString('en-US')}</TdS>
                         <TdS label="24h"
                              color={isNegative(coin.price_change_24h)}>
-                            {updateCurrency(currency, coin.price_change_percentage_24h)}%
+                            <strong>{coin.price_change_percentage_24h}%</strong>
                         </TdS>
                         <TdS label="24h Vol"
                              color="black">{symbol} {coin.total_volume.toLocaleString('en-US')}</TdS>

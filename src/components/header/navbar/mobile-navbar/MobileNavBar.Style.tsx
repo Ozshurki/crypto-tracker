@@ -11,11 +11,10 @@ const MobileNavBarStyle = styled.nav<MobileNavBar>`
   top: 69px;
   right: 0;
   width: 100%;
-  background: white;
+  background: ${props => props.theme.backgroundColor};
   opacity: 0.9;
   border-bottom: 1px solid #E6ECF8;
-
-
+  
   &::after {
     content: '';
     position: absolute;
@@ -23,7 +22,7 @@ const MobileNavBarStyle = styled.nav<MobileNavBar>`
     height: 1px;
     left: 0;
     top: 0;
-    background: black;
+    background-color: ${props => props.theme.textColor};
     transition: width 0.3s ease-in-out;
   }
 
@@ -32,7 +31,6 @@ const MobileNavBarStyle = styled.nav<MobileNavBar>`
     flex-direction: column;
     align-items: flex-start;
     position: absolute;
-
   }
 
 `;

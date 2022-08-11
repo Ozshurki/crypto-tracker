@@ -1,8 +1,9 @@
-import {useState} from "react";
+import {useEffect, useState} from "react";
 
 const usePagination = () => {
+
     const [pageNumber, setPageNumber] = useState<number>(0);
-    const [coins, setCoins] = useState([]);
+    const [coins, setCoins] = useState<any[]>([]);
 
     const coinsPerPage = 11;
     const pagesVisited = pageNumber * coinsPerPage;

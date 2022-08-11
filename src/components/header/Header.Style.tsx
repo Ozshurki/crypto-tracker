@@ -93,6 +93,11 @@ export const HeaderStyle = styled.header<headerType>`
   & .css-b62m3t-container{
     width: 100px;
   }
+  
+  & #react-select-3-listbox{
+    color: ${props => props.theme.textColor};
+    background-color: ${props => props.theme.backgroundColor};
+  }
 
   @media (max-width: 600px) {
     height: 69px;
@@ -142,7 +147,7 @@ export const Hamburger = styled.div<hamburgerType>`
     position: absolute;
     width: 80%;
     height: 2px;
-    border: 1px solid black;
+    border: 1px solid ${props => props.theme.textColor};
     border-radius: 50px;
     transition: 0.3s ease;
   }

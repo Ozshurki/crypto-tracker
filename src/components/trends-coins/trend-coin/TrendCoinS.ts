@@ -14,6 +14,7 @@ export const TrendCoinS = styled.div`
   transition: transform .2s ease-in-out;
   background-color: ${props => props.theme.trendBackgroundColor};
   color: ${props => props.theme.textColor};
+  font-family: 'Poppins', sans-serif;
   
   :hover {
     transform: scale(1.1);

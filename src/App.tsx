@@ -11,16 +11,17 @@ import ScrollUpBtn from "./components/scroll-button/ScrollUpBtn";
 import {ThemeProvider} from "styled-components";
 import {lightTheme, darkTheme} from "./config/themes";
 import {AppS} from "./App.Style";
+import {useSelector} from "react-redux";
 
 
 const App: React.FC = () => {
 
-    const [isDarkTheme, setIsDarkTheme] = useState(false);
+    const isDarkTheme = useSelector((state: any) => state.theme.isDarkTheme);
 
     return (
         <ThemeProvider theme={isDarkTheme ? darkTheme : lightTheme}>
             <AppS>
-                <Header toggleTheme={() => setIsDarkTheme(!isDarkTheme)}/>
+                <Header/>
                 <ScrollToTop/>
                 <Routes>
                     <Route path="/coins" element={<Home/>}/>

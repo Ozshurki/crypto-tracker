@@ -7,14 +7,14 @@ type FiltersType = {
 
 export const FilterContainerS = styled.div<FiltersType>`
 
-  width: 250px;
+  width: 150px;
   display: flex;
   position: relative;
   height: 75px;
-  margin: 0 20px 40px 0;
+  margin: 0 50px 40px 0;
 
   & input {
-    width: 60%;
+    width: 100%;
     height: 100%;
     padding-top: 50px;
     border: none;
@@ -39,7 +39,7 @@ export const FilterContainerS = styled.div<FiltersType>`
       position: absolute;
       bottom: -1px;
       left: 0;
-      width: 60%;
+      width: 100%;
       height: 100%;
       border-bottom: 3px solid #42c9b2;
       transition: all 0.3s ease;
@@ -48,8 +48,8 @@ export const FilterContainerS = styled.div<FiltersType>`
 
   & .content-name {
     position: absolute;
-    bottom: 0px;
-    left: 0px;
+    bottom: 0;
+    left: 0;
     padding-bottom: 5px;
     transition: all 0.3s ease;
     font-size: 17px;
@@ -60,7 +60,7 @@ export const FilterContainerS = styled.div<FiltersType>`
   & input:valid + .label-name .content-name {
     transform: translateY(-150%);
     font-size: 15px;
-    left: 0px;
+    left: 0;
     color: #31b65e;
   }
 
@@ -77,7 +77,7 @@ export const FilterContainerS = styled.div<FiltersType>`
   & .sort-icon {
     position: absolute;
     bottom: -6px;
-    right: 10px;
+    right: -50px;
     z-index: 2;
     
     & svg{
@@ -86,23 +86,31 @@ export const FilterContainerS = styled.div<FiltersType>`
   }
 
   & .filters {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
     position: absolute;
     transform: translateY(100%);
-    background-color: ${props => props.theme.backgroundColor};
-    box-shadow: 0 0 6px .6px black;
+    background-color: white;
+    box-shadow: 0 0 6px .6px ${props => props.theme.textColor};
     border-radius: 10px 0 10px 10px;
     bottom: -5px;
-    right: 30px;
+    right: -30px;
     height: ${props => props.filterIsOpen ? "200px" : "0px"};
-    width: ${props => props.filterIsOpen ? "400px" : "0px"};
+    width: ${props => props.filterIsOpen ? "200px" : "0px"};
     transition: height .3s, width .3s;
     z-index: 1;
-  }
+    overflow: hidden;
+    font-family: 'Poppins', sans-serif;
+    font-size: .9rem;
   
-  @media (max-width: 500px){
-    & .filters{
-      height: ${props => props.filterIsOpen ? "300px" : "0px"};
-      width: ${props => props.filterIsOpen ? "270px" : "0px"};
+    & div{
+      padding: 5px;
+      cursor:pointer;
+      
+      :hover{
+        background-color: #ebebeb;
+      }
     }
   }
 `;

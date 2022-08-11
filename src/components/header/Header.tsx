@@ -10,13 +10,10 @@ import {BsSun, BsFillMoonFill} from "react-icons/bs";
 import {useDispatch} from "react-redux";
 import {currencyOptions} from "../../config/currency-option";
 import {currencyActions} from "../../store/slices/currency";
+import {themeSliceActions} from "../../store/slices/theme";
 
 
-interface HeaderInt {
-    toggleTheme: () => void;
-}
-
-const Header: React.FC<HeaderInt> = ({toggleTheme}) => {
+const Header: React.FC = () => {
 
     const [isOpen, setIsOpen] = useState<boolean>(false);
     const [selectedOption, setSelectedOption] = useState(currencyOptions[0]);
@@ -49,7 +46,7 @@ const Header: React.FC<HeaderInt> = ({toggleTheme}) => {
                                 checked: <BsSun size="2rem" color="black"/>,
                                 unchecked: <BsFillMoonFill size="1.7rem" color="white"/>,
                             }}
-                        onChange={toggleTheme}/>
+                        onChange={() => dispatch(themeSliceActions.toggleTheme())}/>
                     </div>
                     <Select defaultValue={selectedOption}
                             options={currencyOptions}

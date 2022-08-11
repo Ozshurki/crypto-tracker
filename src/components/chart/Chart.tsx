@@ -40,6 +40,20 @@ const Chart: React.FC<ChartInt> = ({history, days, coinName, changeDays}) => {
     const currency = useSelector((state: any) => state.currency.currency);
 
     const options = {
+        scales: {
+            x: {
+                grid: {
+                    color: 'gray',
+                    borderColor: 'gray'
+                }
+            },
+            y: {
+                grid: {
+                    color: 'gray',
+                    borderColor: 'gray'
+                }
+            }
+        },
         responsive: true,
         plugins: {
             legend: {
