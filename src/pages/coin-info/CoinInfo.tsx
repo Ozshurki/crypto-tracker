@@ -5,7 +5,9 @@ import Chart from "../../components/chart/Chart";
 import {PuffLoader} from "react-spinners";
 import PageTitle from "../../components/page-title/PageTitle";
 import {getHistoricalData} from "../../apis/ApiServices";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
+import {AiFillStar, AiOutlineStar} from "react-icons/ai";
+import {favoritesActions} from "../../store/slices/favorites";
 
 const data: any = {
     "id": "bitcoin",
@@ -5168,12 +5170,15 @@ const CoinInfo: React.FC = () => {
     const [historicalData, setHistoricalData] = useState();
     const currency = useSelector((state: any) => state.currency.currency);
     const symbol = useSelector((state: any) => state.currency.symbol);
-
+    const favorites = useSelector((state: any) => state.favorites.coins);
+    const dispatch = useDispatch();
 
     const getHistory = async () => {
         const data1 = await getHistoricalData(id, days, currency);
         setHistoricalData(data1);
     };
+
+    const saveCoin = (id:string | undefined) => dispatch(favoritesActions.toggleCoinInFavorites({id}));
 
     useEffect(() => {
         setCoinInfo(data);
@@ -5196,15 +5201,30 @@ const CoinInfo: React.FC = () => {
                     <div className="coin-details">
                         <p className="details">{data?.description.en.split(". ")[0]}.</p>
                         <div className="coin-rank"><strong>Rank</strong>: {data?.market_cap_rank}</div>
-                        <div className="coin-price"><strong>Current Price</strong>: {symbol}{data?.market_data.current_price[currency].toLocaleString('en-US')}</div>
-                        <div className="coin-mrktCap"><strong>Market Cap</strong>: {symbol}{data?.market_data.market_cap[currency].toLocaleString('en-US')}</div>
+                        <div className="coin-price"><strong>Current
+                            Price</strong>: {symbol}{data?.market_data.current_price[currency].toLocaleString('en-US')}
+                        </div>
+                        <div className="coin-mrktCap"><strong>Market
+                            Cap</strong>: {symbol}{data?.market_data.market_cap[currency].toLocaleString('en-US')}</div>
                     </div>
                 </div>
                 {!historicalData ? <PuffLoader color="#a749ff"/> :
-                    <Chart history={historicalData}
-                           days={days}
-                           coinName={data?.name}
-                           changeDays={(days: number) => setDays(days)}/>
+                    <div>
+                        <h3 className="fav-icon">Favorites
+                                {!!favorites.find((coinID:any) => coinID === id)
+                                    ? <AiFillStar size="1.5rem"
+                                                  color="#ffcc66"
+                                    onClick={() => saveCoin(id)}/>
+                                    : <AiOutlineStar size="1.5rem"
+                                                     color="#ffcc66"
+                                    onClick={() => saveCoin(id)}/>
+                                }
+                        </h3>
+                        <Chart history={historicalData}
+                               days={days}
+                               coinName={data?.name}
+                               changeDays={(days: number) => setDays(days)}/>
+                    </div>
                 }
             </div>
         </CoinInfoS>

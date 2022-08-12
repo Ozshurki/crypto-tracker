@@ -17,7 +17,13 @@ export const CoinInfoS = styled.div`
     
     & > :nth-child(2){
       margin: 0 auto;
+      margin-top: -40px;
       align-self: center;
+      width: 100%;
+    }
+    
+    & h3{
+      padding-left: 50px;
     }
 
     & .coin-info {

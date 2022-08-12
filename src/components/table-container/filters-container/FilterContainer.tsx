@@ -15,6 +15,11 @@ const FilterContainer: React.FC<FilterContainerInt> = ({coin, setCoin, setSortKi
     const [filterIsOpen, setFilterIsOpen] = useState<boolean>(false);
     const isDarkTheme = useSelector((state: any) => state.theme.isDarkTheme);
 
+    const choseSortKind = (sortKind:number) =>{
+        setSortKind(sortKind);
+        setFilterIsOpen(!filterIsOpen);
+    }
+
     return (
         <FilterContainerS filterIsOpen={filterIsOpen}>
             <input type="text"
@@ -32,10 +37,10 @@ const FilterContainer: React.FC<FilterContainerInt> = ({coin, setCoin, setSortKi
                     }
                 </div>
             <div className="filters">
-                <div onClick={() => setSortKind(1)}>Price: High to Low</div>
-                <div onClick={() => setSortKind(2)}>Price: Low to High</div>
-                <div onClick={() => setSortKind(3)}>Market Cap: High to Low</div>
-                <div onClick={() => setSortKind(4)}>Market Cap: Low to High</div>
+                <div onClick={() => choseSortKind(1)}>Price: High to Low</div>
+                <div onClick={() => choseSortKind(2)}>Price: Low to High</div>
+                <div onClick={() => choseSortKind(3)}>Market Cap: High to Low</div>
+                <div onClick={() => choseSortKind(4)}>Market Cap: Low to High</div>
             </div>
         </FilterContainerS>
     );

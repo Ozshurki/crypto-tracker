@@ -1,23 +1,25 @@
 export const sort = (sortKind:number, coins:any[]) =>{
 
-    let sortedCoins:any[];
+    let sortedCoins:any[] = [...coins];
 
     switch (sortKind){
         case 1:
-            sortedCoins = coins.sort((a:any,b:any):number => {
+            return  sortedCoins.sort((a:any,b:any):number => {
                 return (b?.current_price - a?.current_price);
             })
-            return sortedCoins;
         case 2:
-            console.log(coins)
-            break;
+            return  sortedCoins.sort((a:any,b:any):number => {
+                return (a?.current_price - b?.current_price);
+            })
         case 3:
-            console.log(coins)
-            break;
+            return  sortedCoins.sort((a:any,b:any):number => {
+                return (b?.market_cap - a?.market_cap);
+            })
         case 4:
-            console.log(coins)
-            break;
+            return  sortedCoins.sort((a:any,b:any):number => {
+                return (a?.market_cap - b?.market_cap);
+            })
     }
 
-
+    return sortedCoins;
 }

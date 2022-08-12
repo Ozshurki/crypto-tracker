@@ -2945,12 +2945,10 @@ const TableContainer: React.FC = () => {
 
     useEffect(() => {
 
-        // const sortedCoins = sort(sortKind, data);
-        // console.log(sortedCoins);
-        // if (!!sortedCoins) {
-        //     console.log("sorted");
-        //     setCoins(sortedCoins);
-        // }
+        const sortedCoins = sort(sortKind, data);
+
+        if (!!sortedCoins)
+            setCoins(sortedCoins);
 
     }, [sortKind]);
 

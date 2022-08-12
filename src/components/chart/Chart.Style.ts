@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const ChartS = styled.div`
 
-  width: 65%;
+  width: 80%;
   margin: 0 auto;
   
   & .btns-container{

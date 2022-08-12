@@ -1,10 +1,10 @@
 import React, {useEffect, useState} from "react";
-import {AiFillStar} from "react-icons/ai";
-import classNames from "classnames";
-import {useSelector} from "react-redux";
+import {AiFillStar, AiOutlineStar} from "react-icons/ai";
+import {useSelector, useDispatch} from "react-redux";
 import {Link} from "react-router-dom";
 
 import {TableStyle, TdS} from "./Table.Style";
+import {favoritesActions} from "../../../store/slices/favorites";
 
 
 const cols = ["", "Coin", "Price", "24h", "24h Vol", "Market Cap", "Last 7 days"];
@@ -15,10 +15,12 @@ interface TableInt {
 
 const Table: React.FC<TableInt> = ({coins}) => {
 
-    const [isCoinSaved, setIsCoinSaved] = useState<boolean>(false);
     const symbol = useSelector((state: any) => state.currency.symbol);
+    const favorites = useSelector((state: any) => state.favorites.coins);
+    const dispatch = useDispatch();
 
     const isNegative = (num: number) => num < 0 ? "red" : "green";
+    const saveCoin = (id:string) => dispatch(favoritesActions.toggleCoinInFavorites({id}));
 
     return (
         <TableStyle as="table">
@@ -37,10 +39,16 @@ const Table: React.FC<TableInt> = ({coins}) => {
                     <tr key={index}>
                         <TdS label=""
                              color="black">
-                            <span className={classNames("fav-icon", isCoinSaved && "saved")}>
-                                <AiFillStar size="1.2rem"
-                                            color="#ffcc66"/></span>
-
+                            <span className="fav-icon">
+                                {!!favorites.find((id:any) => id === coin.id)
+                                    ? <AiFillStar size="1.5rem"
+                                                  color="#ffcc66"
+                                                  onClick={() => saveCoin(coin.id)}/>
+                                    : <AiOutlineStar size="1.5rem"
+                                                     color="#ffcc66"
+                                                     onClick={() => saveCoin(coin.id)}/>
+                                }
+                            </span>
                         </TdS>
                         <TdS label="Coin"
                              color="black">

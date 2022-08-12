@@ -43,14 +43,14 @@ const Chart: React.FC<ChartInt> = ({history, days, coinName, changeDays}) => {
         scales: {
             x: {
                 grid: {
-                    color: 'gray',
-                    borderColor: 'gray'
+                    color: '#E6ECF8',
+                    borderColor: '#E6ECF8'
                 }
             },
             y: {
                 grid: {
-                    color: 'gray',
-                    borderColor: 'gray'
+                    color: '#E6ECF8',
+                    borderColor: '#E6ECF8'
                 }
             }
         },

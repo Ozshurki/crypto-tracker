@@ -6,6 +6,7 @@ export const AppS = styled.div`
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   overflow-x: hidden;
   transition: all .5s;
   background-size: cover;
