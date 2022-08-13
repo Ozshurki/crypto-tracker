@@ -11,7 +11,8 @@ export const FilterContainerS = styled.div<FiltersType>`
   display: flex;
   position: relative;
   height: 75px;
-  margin: 0 50px 40px 0;
+  margin: 0 120px 40px 0;
+  margin: 20px auto;
 
   & input {
     width: 100%;

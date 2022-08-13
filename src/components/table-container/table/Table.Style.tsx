@@ -20,7 +20,7 @@ export const TdS = styled.td<tdType>`
     }
     &::before {
       content: "${props => props.label}";
-      color: black;
+      color: ${props => props.theme.textColor};
       position: absolute;
       left: 0;
       width: 50%;
@@ -154,7 +154,7 @@ export const TableStyle = styled.table`
 
     & td {
       text-align: right;
-      padding-left: 50%;
+      padding-left: 80px;
       position: relative;
       
       
