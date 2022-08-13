@@ -5218,8 +5218,8 @@ const CoinInfo: React.FC = () => {
                     </div>
                     <div className="coin-details">
                         <p className="details">{coinInfo?.description.en.split(". ")[0].length === 0
-                            ? "No description for this coin"
-                            : parse(`${coinInfo?.description.en.split(". ")[0]}`, options)}</p>
+                            ? "No description for this coin."
+                            : parse(`${coinInfo?.description.en.split(". ")[0]}`, options)}.</p>
                         <div className="coin-rank"><strong>Rank</strong>: {coinInfo?.market_cap_rank}</div>
                         <div className="coin-price"><strong>Current
                             Price</strong>: {symbol}{coinInfo?.market_data.current_price[currency].toLocaleString('en-US')}
