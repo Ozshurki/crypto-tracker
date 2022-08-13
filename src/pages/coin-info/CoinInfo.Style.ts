@@ -68,6 +68,11 @@ export const CoinInfoS = styled.div`
 
         & p {
           margin: 20px 0;
+          
+          & a{
+            text-decoration: none;
+            color: #7510F7;
+          }
         }
 
         & div {

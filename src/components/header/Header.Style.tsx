@@ -32,6 +32,11 @@ export const HeaderStyle = styled.header<headerType>`
     margin-left: 20px;
     font-family: 'Poppins', sans-serif;
     font-weight: 600;
+    
+    & a{
+      text-decoration: none;
+      color: ${props => props.theme.textColor};
+    }
   }
 
   & .theme-toggle-container {

@@ -120,6 +120,7 @@ const FilterContainer: React.FC<FilterContainerInt> = ({coin, setCoin, setSortKi
 
         setCoin(e.target.value);
 
+        console.log(e.target.value);
         // Hide results if user delete the input
         if (e.target.value === '') {
             setResults([]);
@@ -129,7 +130,7 @@ const FilterContainer: React.FC<FilterContainerInt> = ({coin, setCoin, setSortKi
         try {
             debounce(async () => {
                 const data = await getSearchResults(e.target.value);
-                setResults(data);
+                setResults(data.coins);
             }, 600);
         } catch (err) {
             console.log(err);

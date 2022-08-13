@@ -7,7 +7,7 @@ import {TableStyle, TdS} from "./Table.Style";
 import {favoritesActions} from "../../../store/slices/favorites";
 
 
-const cols = ["", "Coin", "Price", "24h", "24h Vol", "Market Cap", "Last 7 days"];
+const cols = ["", "Coin", "Price", "24h", "24h Vol", "Market Cap"];
 
 interface TableInt {
     coins: any;
@@ -73,10 +73,6 @@ const Table: React.FC<TableInt> = ({coins}) => {
                              color="black">{symbol} {coin.total_volume.toLocaleString('en-US')}</TdS>
                         <TdS label="Mkt Cap"
                              color="black">{symbol} {coin.market_cap.toLocaleString('en-US')}</TdS>
-                        <TdS label="Last 7 days"
-                             color="black">
-                            <img src="https://www.coingecko.com/coins/9956/sparkline" alt="chart"/>
-                        </TdS>
                     </tr>
                 );
             })}

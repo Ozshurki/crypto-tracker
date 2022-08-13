@@ -11,6 +11,7 @@ import {useDispatch} from "react-redux";
 import {currencyOptions} from "../../config/currency-option";
 import {currencyActions} from "../../store/slices/currency";
 import {themeSliceActions} from "../../store/slices/theme";
+import {Link} from "react-router-dom";
 
 
 const Header: React.FC = () => {
@@ -34,7 +35,9 @@ const Header: React.FC = () => {
     return (
         <HeaderStyle isScroll={isScroll}>
             <div className="logo">
-                Crypto Tracker
+                <Link to="/">
+                    Crypto Tracker
+                </Link>
             </div>
             <div className="navbar">
                 <Navigation/>
@@ -46,11 +49,11 @@ const Header: React.FC = () => {
                                 checked: <BsSun size="2rem" color="black"/>,
                                 unchecked: <BsFillMoonFill size="1.7rem" color="white"/>,
                             }}
-                        onChange={() => dispatch(themeSliceActions.toggleTheme())}/>
+                            onChange={() => dispatch(themeSliceActions.toggleTheme())}/>
                     </div>
                     <Select defaultValue={selectedOption}
                             options={currencyOptions}
-                            onChange={(selectedOption:any) => dispatch(currencyActions.setCurrency(selectedOption))}/>
+                            onChange={(selectedOption: any) => dispatch(currencyActions.setCurrency(selectedOption))}/>
                 </div>
             </div>
             <Hamburger onClick={toggleNavBar} isOpen={isOpen}>

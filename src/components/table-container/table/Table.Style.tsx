@@ -157,9 +157,6 @@ export const TableStyle = styled.table`
       padding-left: 50%;
       position: relative;
       
-      &:last-child:before{
-        margin-top: 20px;
-      }
       
       & img{
         width: 100px;

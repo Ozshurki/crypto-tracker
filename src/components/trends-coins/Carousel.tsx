@@ -5,7 +5,7 @@ import AliceCarousel from "react-alice-carousel";
 import {getTrendsCoins} from "../../apis/ApiServices";
 import {PuffLoader} from "react-spinners";
 
-// const coins = [
+// const coins1:any[] = [
 //     {
 //         "item": {
 //             "id": "gains-network",
@@ -116,32 +116,19 @@ import {PuffLoader} from "react-spinners";
 
 const Carousel: React.FC = () => {
 
-    const [coins, setCoins] = useState([]);
+    const [coins, setCoins] = useState<any[]>([]);
     const [isLoading, setIsLoading] = useState<boolean>(true);
 
     const getCoins = async () => {
-        try {
-            setIsLoading(true);
-            const data = await getTrendsCoins();
-            setIsLoading(false);
-            setCoins(data);
-        } catch (err) {
-            console.log(err);
-        }
+        setIsLoading(true);
+        const data = await getTrendsCoins();
+        setIsLoading(false);
+        setCoins(data.coins);
     };
 
     useEffect(() => {
         getCoins();
-    },[]);
-
-    const responsive = {
-        0: {
-            items: 2,
-        },
-        1100: {
-            items: 4,
-        },
-    };
+    }, []);
 
     const items = coins.map((coin: any) => {
         return (
@@ -159,6 +146,15 @@ const Carousel: React.FC = () => {
             </>
         );
     });
+
+    const responsive = {
+        0: {
+            items: 2,
+        },
+        1100: {
+            items: 4,
+        },
+    };
 
     return (
         <CarouselS>

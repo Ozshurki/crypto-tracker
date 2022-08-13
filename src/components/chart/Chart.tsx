@@ -40,6 +40,11 @@ const Chart: React.FC<ChartInt> = ({history, days, coinName, changeDays}) => {
     const currency = useSelector((state: any) => state.currency.currency);
 
     const options = {
+        elements:{
+          point:{
+              radius:1
+          }
+        },
         scales: {
             x: {
                 grid: {
