@@ -69,4 +69,18 @@ export const TrendCoinS = styled.div`
      height: 100%;
    }
   }
+  
+  @media (max-width: 560px){
+    width: 150px;
+  }
+  
+  @media (max-width: 500px){
+    width: 120px;
+  }
+
+  @media (max-width: 350px){
+    width: 100px;
+  }
+  
+  
 `;

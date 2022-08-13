@@ -11,13 +11,21 @@ export const getCoinsList = async (currency:string) =>{
 
 export const getTrendsCoins = async () => {
     try{
-        const res = await axios.get('https://api.coingecko.com/api/v3/search/trending');
+        const res = await axios.get(`https://api.coingecko.com/api/v3/search/trending`);
         return res.data;
     } catch (err){
         console.log(err);
     }
-
 };
+
+export const getCoinData = async (id:string | undefined) => {
+        try{
+            const res = await axios.get(`https://api.coingecko.com/api/v3/coins/${id}?sparkline=false`);
+            return res.data;
+        } catch (err){
+            console.log(err);
+        }
+}
 
 export const getHistoricalData = async (id: string | undefined, days: number, currency:string) => {
     try {
@@ -27,3 +35,12 @@ export const getHistoricalData = async (id: string | undefined, days: number, cu
         console.log(err);
     }
 };
+
+export const getSearchResults = async (input:string) =>{
+    try {
+        const res = await axios.get(`https://api.coingecko.com/api/v3/search?query=${input}`);
+        return res.data;
+    } catch (err) {
+        console.log(err);
+    }
+}

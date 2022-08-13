@@ -24,6 +24,10 @@ export const CoinInfoS = styled.div`
     
     & h3{
       padding-left: 50px;
+      
+      & svg{
+        cursor: pointer;
+      }
     }
 
     & .coin-info {

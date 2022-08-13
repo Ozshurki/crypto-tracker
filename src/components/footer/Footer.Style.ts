@@ -6,15 +6,14 @@ export const FooterS = styled.footer`
   margin-top: 50px;
   width: 100vw;
   min-height: 200px;
-  background-color: ${props => props.theme.textColor};
+  background-color: #1e1e1e;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   font-family: 'Ubuntu', sans-serif;
 
-
   & > p {
-    color: ${props => props.theme.backgroundColor};
+    color: white;
     font-weight: 300;
     font-size: 1.1rem;
     opacity: 0.7;

@@ -1,5 +1,7 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {Navigate, Route, Routes} from "react-router-dom";
+import {ThemeProvider} from "styled-components";
+import {useSelector} from "react-redux";
 
 import Home from "./pages/home/Home";
 import Header from "./components/header/Header";
@@ -8,10 +10,9 @@ import Favorites from "./pages/favorites/Favorites";
 import Footer from "./components/footer/Footer";
 import ScrollToTop from "./components/scroll-to-top/ScrollToTop";
 import ScrollUpBtn from "./components/scroll-button/ScrollUpBtn";
-import {ThemeProvider} from "styled-components";
 import {lightTheme, darkTheme} from "./config/themes";
 import {AppS} from "./App.Style";
-import {useSelector} from "react-redux";
+
 
 
 const App: React.FC = () => {

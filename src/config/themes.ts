@@ -1,5 +1,6 @@
 export const lightTheme={
     backgroundColor: "white",
+    trendBackgroundColor: "white",
     textColor: "black",
     boxShadow: "0 0 3px 2px #E6ECF8",
     rowHover: "#f9fafb",

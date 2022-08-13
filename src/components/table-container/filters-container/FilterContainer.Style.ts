@@ -72,6 +72,56 @@ export const FilterContainerS = styled.div<FiltersType>`
   & input[type=text] {
     font-size: 1rem;
     font-family: 'Mukta', sans-serif;
+    color: ${props => props.theme.textColor};
+  }
+  
+  & .clear-input{
+    position: absolute;
+    bottom: 5px;
+    right: 3px;
+    cursor: pointer;
+  }
+  
+  & .search-results{
+    position: absolute;
+    right: -30px;
+    top: 80px;
+    width: 200px;
+    height: 150px;
+    box-shadow: ${props => props.theme.boxShadow};
+    border-radius: 5px;
+    background-color: ${props => props.theme.backgroundColor};
+    overflow-y: hidden;
+    border: 1px solid white;
+    
+    & ul{
+      width: 100%;
+      
+      & a{
+        text-decoration: none;
+      }
+      & li{
+        height: 30px;
+        width: 100%;
+        padding: 5px 0;
+        list-style: none;
+        border-bottom: 1px solid #e5e7eb;
+        cursor: pointer;
+        text-align:center;
+        font-family: 'Poppins', sans-serif;
+        color: ${props => props.theme.textColor};
+        
+        & span{
+          color: gray;
+          font-size: .8rem;
+        }
+        
+        :hover{
+          background-color: ${props => props.theme.rowHover};
+          color: gray;
+        }
+      }
+    }
   }
 
   & .sort-icon {
@@ -91,7 +141,8 @@ export const FilterContainerS = styled.div<FiltersType>`
     justify-content: space-evenly;
     position: absolute;
     transform: translateY(100%);
-    background-color: white;
+    background-color: ${props => props.theme.trendBackgroundColor};
+    color: ${props => props.theme.textColor};
     box-shadow: 0 0 6px .6px ${props => props.theme.textColor};
     border-radius: 10px 0 10px 10px;
     bottom: -5px;
@@ -110,6 +161,7 @@ export const FilterContainerS = styled.div<FiltersType>`
       
       :hover{
         background-color: #ebebeb;
+        color:black;
       }
     }
   }

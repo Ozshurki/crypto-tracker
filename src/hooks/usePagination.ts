@@ -1,4 +1,4 @@
-import {useCallback, useEffect, useState} from "react";
+import {useEffect, useState} from "react";
 
 const usePagination = () => {
 
@@ -16,7 +16,7 @@ const usePagination = () => {
     const pageCount = Math.ceil(coins.length / coinsPerPage);
     const changePage = ({selected}: any) => setPageNumber(selected);
 
-    return {displayCoins, pageCount, changePage, setCoins};
+    return {displayCoins, pageCount, changePage, setCoins, coins};
 };
 
 export default usePagination;

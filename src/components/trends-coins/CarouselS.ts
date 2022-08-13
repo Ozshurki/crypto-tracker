@@ -35,5 +35,9 @@ export const CarouselS = styled.div`
     :hover {
       transform: scale(1.1);
     }
+    
+    & .alice-carousel__stage-item{
+      
+    }
   }
 `;

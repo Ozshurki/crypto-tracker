@@ -66,6 +66,7 @@ const Table: React.FC<TableInt> = ({coins}) => {
                              color="black">{symbol} {coin.current_price.toLocaleString('en-US')}</TdS>
                         <TdS label="24h"
                              color={isNegative(coin.price_change_24h)}>
+                            <span><strong>{coin.price_change_percentage_24h > 0 && "+"}</strong></span>
                             <strong>{coin.price_change_percentage_24h}%</strong>
                         </TdS>
                         <TdS label="24h Vol"

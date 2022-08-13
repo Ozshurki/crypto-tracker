@@ -9,7 +9,7 @@ const Footer: React.FC = () => {
     return (
         <FooterS>
             <p>Crypto tracker</p>
-            <p>Handcrafted by Oz Shurki - +972-545416161</p>
+            <p>Handcrafted by Oz Shurki +972-545416161</p>
             <div className="social-links">
                 <div className="social-link">
                     <a href="https://www.linkedin.com/in/oz-shurki/" target="_blank">
