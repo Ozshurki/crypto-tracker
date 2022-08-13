@@ -6,6 +6,9 @@ interface coinCardInt{
 
 export const CoinCardS = styled.div<coinCardInt>`
   
+  display: flex;
+  justify-content: center;
+  align-items: center;
   height: 230px;
   width: 200px;
   margin-top: 30px;

@@ -3,6 +3,7 @@ import {CoinCardS} from "./CoinCard.Style";
 import {useSelector} from "react-redux";
 import {Link} from "react-router-dom";
 import {getCoinData} from "../../apis/ApiServices";
+import {PuffLoader} from "react-spinners";
 
 interface CoinCardInt {
     id: string;
@@ -4858,15 +4859,19 @@ interface CoinCardInt {
 const CoinCard: React.FC<CoinCardInt> = ({id}) => {
 
     const [coinData, setCoinData] = useState<any>();
+    const [isLoading, setIsLoading] = useState<boolean>(false);
+
     const currency = useSelector((state: any) => state.currency.currency);
     const symbol = useSelector((state: any) => state.currency.symbol);
 
     const isNegative = (num: number) => num < 0 ? "red" : "green";
 
-    const getData = async () =>{
+    const getData = async () => {
+        setIsLoading(true);
         const data = await getCoinData(id);
+        setIsLoading(false);
         setCoinData(data);
-    }
+    };
 
     useEffect(() => {
         getData();
@@ -4874,19 +4879,23 @@ const CoinCard: React.FC<CoinCardInt> = ({id}) => {
 
     return (
         <CoinCardS color={isNegative(coinData?.market_data.price_change_percentage_24h)}>
-            <Link to={`/coins/${id}`}>
-                <div className="icon">
-                    <img src={coinData?.image.large} alt={coinData?.name}/>
-                </div>
-                <div className="content">
-                    <div>{coinData?.name}</div>
-                    <div className="price"> {symbol} {coinData?.market_data.current_price[currency].toLocaleString('en-US')}</div>
-                    <div className="percentage">
-                        <span>{coinData?.market_data.price_change_percentage_24h > 0 && "+"} </span>
-                        {coinData?.market_data.price_change_percentage_24h} %
+            {isLoading ? <PuffLoader
+                    color="#a749ff"/> :
+                <Link to={`/coins/${id}`}>
+                    <div className="icon">
+                        <img src={coinData?.image.large} alt={coinData?.name}/>
                     </div>
-                </div>
-            </Link>
+                    <div className="content">
+                        <div>{coinData?.name}</div>
+                        <div
+                            className="price"> {symbol} {coinData?.market_data.current_price[currency].toLocaleString('en-US')}</div>
+                        <div className="percentage">
+                            <span>{coinData?.market_data.price_change_percentage_24h > 0 && "+"} </span>
+                            {coinData?.market_data.price_change_percentage_24h} %
+                        </div>
+                    </div>
+                </Link>
+            }
         </CoinCardS>
     );
 };
