@@ -45,7 +45,7 @@ export const CoinInfoS = styled.div`
         display: flex;
         justify-content: center;
         align-items: center;
-        min-height: 250px;
+        height: 250px;
         max-width: 300px;
 
         & img {
@@ -89,9 +89,18 @@ export const CoinInfoS = styled.div`
 
       & .coin-info{
         width: 80%;
+        height: auto;
         border-right: 0;
         border-bottom: 1px solid #E6ECF8;
         padding-bottom: 30px;
+      
+        & .coin-img{
+          height: 80%;
+        }
+      }
+      
+      :nth-child(2){
+        height: auto;
       }
     }
   }

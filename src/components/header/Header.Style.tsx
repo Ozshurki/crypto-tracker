@@ -111,7 +111,7 @@ export const HeaderStyle = styled.header<headerType>`
     justify-content: space-around;
     
     & .logo{
-      display: none;
+      
     }
 
     & .navbar {
@@ -151,8 +151,9 @@ export const Hamburger = styled.div<hamburgerType>`
   & span {
     position: absolute;
     width: 80%;
-    height: 2px;
+    height: 1px;
     border: 1px solid ${props => props.theme.textColor};
+    background-color: ${props => props.theme.textColor};
     border-radius: 50px;
     transition: 0.3s ease;
   }

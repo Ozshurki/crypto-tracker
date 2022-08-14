@@ -12,7 +12,7 @@ export const FilterContainerS = styled.div<FiltersType>`
   position: relative;
   height: 75px;
   margin: 0 120px 40px 0;
-  margin: 20px auto;
+  
 
   & input {
     width: 100%;
@@ -165,6 +165,10 @@ export const FilterContainerS = styled.div<FiltersType>`
         color:black;
       }
     }
+  }
+  
+  @media(max-width: 500px){
+    margin: 20px auto;
   }
 `;
 
