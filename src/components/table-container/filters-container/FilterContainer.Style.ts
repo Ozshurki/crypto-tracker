@@ -94,6 +94,7 @@ export const FilterContainerS = styled.div<FiltersType>`
     background-color: ${props => props.theme.backgroundColor};
     overflow-y: hidden;
     border: 1px solid white;
+    z-index: 3;
     
     & ul{
       width: 100%;
